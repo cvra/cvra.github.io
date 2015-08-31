@@ -1,13 +1,13 @@
 # Site settings
 name: Slim Pickins Jekyll Theme
-email: 
+email:
 author: Chrisanthropic
 
 keywords: jekyll, jekyll theme, jekyll framework, stuffthings
 description: > # this means to ignore newlines until "baseurl:"
   Witty description here.
 
-baseurl: /slim-pickins-jekyll-theme
+baseurl: 
 url: https://chrisanthropic.github.io
 
 header: yes
@@ -34,7 +34,7 @@ gems:
 
 feed:
   path: atom.xml
-  
+
 # Compress our Css
 #sass:
 #    style: :compressed
@@ -43,7 +43,7 @@ permalink: /blog/:year/:title
 
 #### SEO Stuff
 # Google Analytics
-google_universal_analytics: 
+google_universal_analytics:
 google_universal_analytics_cookiedomain: auto
 
 # Facebook Opengraph
@@ -54,6 +54,6 @@ facebook_page:                        #the URL of your Facebook Page
 facebook_image:                       #enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
 
 # Twitter Cards
-twitter_user: 
+twitter_user:
 twitter_card: true
 twitter_image:                        #enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
