@@ -40,16 +40,16 @@
 	line-height: $navbar-height;
 	display: block;
 	padding: 0 22px;
-	border-color: #aaa;
+	border-color: $navbar-text-color;
 
 	/* Typography */
 	font-family: $navbar-font-family;
 	font-size: $navbar-font-size;
 	font-weight: 700;
-	color: $secondary-color;
+	color: $navbar-text-color;
 	text-transform: uppercase;
 	text-decoration: none;
-	
+
 	/* Transitions */
 	-webkit-transition: color .2s ease-in, border-top-color .2s ease-in;
 	-ms-transition: color .2s ease-in, border-top-color .2s ease-in;
@@ -138,9 +138,9 @@
 	font-family: $navbar-font-family;
 	font-size: ($navbar-font-size * .92);
 	text-decoration: none;
-	color: $secondary-color;
+	color: $navbar-text-color;
 	font-weight: 400;
-	
+
 	/* Background & effects */
 	background: $navbar-color;
 	-webkit-transition: color .2s ease-in, border-left-color .2s ease-in;;
@@ -233,7 +233,7 @@
 	}
 
 	#nav #hideMenu>a {
-		color: $secondary-color;
+		color: $navbar-text-color;
 	}
 
 	#toggleMenu>a::after, #hideMenu>a::after {
@@ -243,8 +243,8 @@
 		top: 21px;
 		height: 9px;
 		width: 20px;
-		border-top: 2px solid $secondary-color;
-		border-bottom: 2px solid $secondary-color;
+		border-top: 2px solid $navbar-text-color;
+		border-bottom: 2px solid $navbar-text-color;
 		z-index: 1;
 	}
 
@@ -255,21 +255,21 @@
 		top: 13px;
 		height: 3px;
 		width: 20px;
-		border-bottom: 2px solid $secondary-color;
+		border-bottom: 2px solid $navbar-text-color;
 		z-index: 1;
 	}
 
 	#hideMenu>a::after, #hideMenu>a::before {
-		border-color: $secondary-color;
+		border-color: $navbar-text-color;
 	}
-	
+
 	.navbar {
 	  background-color: $navbar-color;
 	  height: 44px;
 	  display: inline;
 	}
- 
+
 	#nav>.right.primary-nav  {
 	  background-color: lighten($navbar-color, 10%);
 	}
-} 
+}
