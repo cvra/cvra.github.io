@@ -1,14 +1,14 @@
 # Site settings
-name: Slim Pickins Jekyll Theme
-email:
-author: Chrisanthropic
+name: CVRA
+email: info@cvra.ch
+author: Club Vaudois de Robotique Autonome
 
-keywords: jekyll, jekyll theme, jekyll framework, stuffthings
+keywords:
 description: > # this means to ignore newlines until "baseurl:"
   Witty description here.
 
-baseurl: 
-url: https://chrisanthropic.github.io
+baseurl:
+url: https://cvra.github.io
 
 header: no
 header_sm: images/banner-small.jpg
