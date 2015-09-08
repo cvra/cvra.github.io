@@ -21,7 +21,7 @@
 	line-height: $navbar-height;
 	color: $socials-font-color;
 	padding: 0 10px;
-	
+
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -49,7 +49,7 @@
 .icon-linkedin:before {
 	content: "\e606";
 }
- 
+
 // Base styling for all icons with the :hover psuedoclass
 [class^="icon-"], [class*=" icon-"]:hover {
 	-moz-transition: all .2s ease-in;

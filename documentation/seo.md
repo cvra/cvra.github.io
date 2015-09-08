@@ -2,8 +2,8 @@
 layout: page
 title: "SEO"
 permalink: /documentation/seo.html
---- 
- 
+---
+
 * Google Analytics*
   * *Uses Javascript
   * just add your `google_universal_analytics ID` to the _config.yml file.
@@ -14,14 +14,14 @@ permalink: /documentation/seo.html
     facebook_app_id:                      #enter your App ID
     facebook_locale: en_US
     facebook_page:                        #the URL of your Facebook Page
-    facebook_image:			#enter a default image (at least 200x200px) to use here for posts/pages that don't have one.	
+    facebook_image:			#enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
   ```
 
 * Twitter Cards
   Fill out the following in your config.yml
 
   ```
-    twitter_user: 
+    twitter_user:
     twitter_card: true
     twitter_image: 			 #enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
   ```

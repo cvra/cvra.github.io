@@ -2,7 +2,7 @@
 layout: page
 title: "rakefile"
 permalink: /documentation/rakefile.html
---- 
+---
 Includes the following custom tasks:
 
 * *minify_html* - uses HTML_compressor to minify HTML

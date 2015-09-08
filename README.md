@@ -67,7 +67,7 @@ Uses minimal sass [components](https://github.com/zurb/bower-foundation/tree/mas
 A fully responsive navigation bar with the following features:
 
 * 2 navigation areas
-  * Left - Primary navigation 
+  * Left - Primary navigation
   * Right - Social media links
 * Both navigation areas are populated using Jekyll 'data' files, nav.yml and socials.yml respectively
 * Ability to create 'external' links that link offsite while still using socials.yml to do so
@@ -121,14 +121,14 @@ These tasks have been bundled into custom build and deploy tasks
     facebook_app_id:                      #enter your App ID
     facebook_locale: en_US
     facebook_page:                        #the URL of your Facebook Page
-    facebook_image:			#enter a default image (at least 200x200px) to use here for posts/pages that don't have one.	
+    facebook_image:			#enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
   ```
 
 * Twitter Cards
   Fill out the following in your config.yml
 
   ```
-    twitter_user: 
+    twitter_user:
     twitter_card: true
     twitter_image: 			 #enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
   ```
@@ -153,7 +153,7 @@ For now it's best to start fresh or install the them and then transfer over any 
 * Git clone this repo, cd into the directory and run `bundle install --binstubs --path=vendor` to install the required dependencies.
 * Edit your config.yml file
   * Change the title and description at a minimum.
-* Update your navigation 
+* Update your navigation
   * edit the `_data/nav.yml` file as needed
 * Update your social links
   * edit the `_data/socials.yml` file as needed

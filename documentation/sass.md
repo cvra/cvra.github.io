@@ -2,7 +2,7 @@
 layout: page
 title: "sass"
 permalink: /documentation/sass.html
---- 
+---
 
 Includes the following variables for easy customization:
 

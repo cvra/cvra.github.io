@@ -9,7 +9,7 @@ s3_bucket: www.YOUR-DOMAIN.com
 
 max_age:
   "css/*": 604800
-  "*": 300    
+  "*": 300
 
 gzip: true
 

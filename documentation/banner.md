@@ -7,7 +7,7 @@ header_sm: images/banner-xl2.jpg
 header_med: images/banner-xl2.jpg
 header_large: images/banner-xl2.jpg
 header_xl: images/banner-xl2.jpg
---- 
+---
 
 **Basics**
 You can set the banner per page or site-wide. This page has a custom banner (see, it's upside-down).
@@ -15,7 +15,7 @@ You can set the banner per page or site-wide. This page has a custom banner (see
 First it checks a pages yaml frontmatter for the header image, if none is found then it checks for a site-wide default in your config.yml, if none is found then no banner image is displayed.
 
 **srcset**
-The banner uses the `srcset` tag to set different sized images for different screens, so we'll need 4 sizes of our banner image: 
+The banner uses the `srcset` tag to set different sized images for different screens, so we'll need 4 sizes of our banner image:
 
 * small
 * medium
