@@ -2,6 +2,9 @@
 layout: post
 title: My notes on installing Arch Linux on my Lenovo T420s
 tags: linux
+author: Antoine
+crosspost_site: Antoine's blog
+crosspost_url: http://antoinealb.net/2014/12/05/archlinux-install.html
 ---
 I recently decided I wanted to reinstall my Arch Linux system.
 I have been running Arch on my Lenovo T420s for a few years now, and it has been working flawlessly.
