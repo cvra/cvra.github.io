@@ -169,21 +169,5 @@ pre {
 
 .socials {
     color: $navbar-text-color;
-}
-
-/**
- * Icons
- */
-.icon {
-
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        path {
-            fill: $complimentary-color;
-        }
-    }
+    padding: 10px;
 }
