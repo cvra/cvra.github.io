@@ -171,3 +171,10 @@ pre {
     color: $navbar-text-color;
     padding: 10px;
 }
+
+/* Ugly hack to make Grabcad's icon work. Don't hate me. */
+.icon-grabcad {
+    color: $navbar-text-color;
+    vertical-align: middle;
+    font-size: 21px;
+}

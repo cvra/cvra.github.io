@@ -1,8 +1,6 @@
-- title: "feed"
-  href: "http://cvra.github.io/atom.xml"
-
 - title: "github"
   href: "https://github.com/cvra"
 
-- title: "grabcad"
-  href: "https://grabcad.com/cvra-1/projects"
+- title: "feed"
+  href: "http://cvra.github.io/atom.xml"
+
