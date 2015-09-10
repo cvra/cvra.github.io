@@ -5,6 +5,7 @@
   href: "/blog/"
 
 - title: "Robots"
+  url: "/coupe"
   subcategories:
     - subtitle: "2015"
       subhref: "/coupe/2015.html"
