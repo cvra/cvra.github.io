@@ -128,7 +128,7 @@ You can test Xenomai by running this as root
 
 You should get something like this
 
-![Xenomai latency test]({{ site.url }}/assets/media/xeno_latency_test.png)
+![Xenomai latency test](/images/posts/xenomai-beaglebone/xeno_latency_test.png)
 
 You'll notice the latency and jitter are - as expected and promised - in the order of microseconds.
 Bear in mind that this is just a test and doesn't reflect the performance of Xenomai under high CPU loads.
