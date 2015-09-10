@@ -1,0 +1,388 @@
+---
+layout: post
+title: Porting lwIP to UC/OS-II
+categories: Programming
+tags: ucos2 nios2 lwip c
+author: Antoine
+crosspost_site: Antoine's blog
+crosspost_url: http://antoinealb.net/programming/2013/12/06/lwip-ucos2.html
+---
+
+For this year Eurobot, the CVRA is building two different robots, and also doing some computer vision.
+While this sounds nice, it also comes with added complexity : The two robots have to communicate with the two computer vision boards,
+and with each other, using the communication architecture below (Debra-4 being our main robot with SCARA arms and Nastya-2 our holonomic platform).
+
+
+![CVRA 2014 System architecture](/images/posts/lwip-ucos2/robot_architecture.png)
+
+
+Developping so much communication between embedded systems can be quite a headache, especially when it comes to debugging and trying
+to take a peek at what the messages are. It would be really nice if we could spare the time of writing the communication stack and debug
+tools and jump straight to the application. This is where IP (either TCP/IP or UDP/IP) becomes useful : It take cares of packet routing, differenciation
+using ports numbers and we also have fantastic debugs tools available, like Wireshark.
+
+
+lwIP is a small implementation of the IP protocol, whose main focus is to avoid relying on specific OS constructs and keeping a very low memory footprint, which makes it perfect for embedded systems.
+In addition to TCP/IP and UDP/IP, it provides PPPoS, which will be really useful to us, as we don't have Ethernet connectivity on the FPGA boards.
+
+As you can see on the architecture schematic, both of our FPGA boards will be running a shiny NIOS-II softcore processor, which in turn will be running the UC/OS-II operating system.
+While softcores have been in use at the club for four years now, we did not have any kind of OS on it, only a simple, homebrew and buggy round robin scheduler, which really needed
+o get replaced by something cleaner.
+At first we were hesitating between two operating systems, UC/OS-II and FreeRTOS.
+The second appealed to us due to its Open Source License, and a greater feature set than UC/OS-II.
+On the other hand, UC/OS-II was widely used, was extensively documented and had previously been sent to Mars by the NASA (which is pretty cool).
+What finally decided towards UC/OS-II was the fact that there was a commercial port of it on our target platform and we wanted to avoid the time expense of porting an RTOS ourselves.
+
+
+Now that we know what operating system will run our lwIP port, we can start searching for some documentation about the porting process.
+The main sources of information regarding the process of porting lwIP to a new system are the [http://lwip.wikia.com/wiki/Porting_for_an_OS](Porting guide), `doc/sys_arch.txt` in the lwIP source tree and finally, the comments in the source itself.
+After a bit of reading, we know that we will have to provide three files :
+
+* `cc.h` This file is responsible to provide various typedef's and informations about the target compiler / CPU.
+* `sys_arch.h` This files includes all the necessary files and defines the <code>sys_sem_t</code> and <code>sys_mbox_t</code> types for system semaphores and mailboxes.
+* `sys_arch.c` This files defines a set of functions used by lwIP to create tasks, semaphores and mailboxes. It also needs to provides a few utilitary functions to get the system's time.
+
+# cc.h
+This file is pretty straightforward to implement : it only contains types and simple macros. The types can be defined as follow.
+Please note that this code snippet defines lwIP types using <code>stdint.h</code> types, which may not be available on your target platform.
+A better way of doing this would be to use UC/OS-II types.
+
+{% highlight c %}
+/* Define generic types used in lwIP */
+typedef uint8_t u8_t;
+typedef int8_t s8_t;
+typedef uint16_t u16_t;
+typedef int16_t s16_t;
+typedef uint32_t u32_t;
+typedef int32_t s32_t;
+typedef intptr_t mem_ptr_t;
+{% endhighlight %}
+
+After defining basic types, we have to provide compiler hints about structure packing.
+In this application we are using GCC, and searching around the wiki and mailing list gives us the correct implementation.
+{% highlight c %}
+/* Compiler hints for packing structures */
+#define PACK_STRUCT_FIELD(x) x __attribute__((packed))
+#define PACK_STRUCT_STRUCT __attribute__((packed))
+#define PACK_STRUCT_BEGIN
+#define PACK_STRUCT_END
+{% endhighlight %}
+
+We have to provide two macros to output diagnostic messages.
+Those macros are specific to your target board/platform, and not to UC/OS-II, so you should adapt my implementation to suit your needs.
+
+{% highlight c %}
+/* Non-fatal, prints a message. Uses printf formatting. */
+#define LWIP_PLATFORM_DIAG(x)   {printf(x);}
+/* Fatal, print message and abandon execution. Uses printf formating. The panic() function never returns. */
+#define LWIP_PLATFORM_ASSERT(x)  { panic((x)); }
+{% endhighlight %}
+
+Finally, we need to provide lwIP some to way to guarantee atomicity of a piece of code.
+In this port I am using the "lightweight" synchronization mechanism, which means we disable interrupts while in an atomic code block.
+To implement this, we need a macro to disable interrupts and another macro to return the interrupts to their previous state, which is saved in a stack variable, using a third macro.
+We can find information about how to obtain atomicity in the UC/OS-II reference manual.
+
+{% highlight c %}
+#define SYS_ARCH_DECL_PROTECT(x) OS_CPU_SR cpu_sr
+#define SYS_ARCH_PROTECT(x)      OS_ENTER_CRITICAL()
+#define SYS_ARCH_UNPROTECT(x)    OS_EXIT_CRITICAL()
+{% endhighlight %}
+
+# Semaphores
+Semaphores are a standard construct used in multithreading programming to implement synchronization between tasks or to guarantee exclusive access to a shared resource.
+They can be either binary or counting (lwip accept both).
+
+Once again the UC/OS-II reference manual comes in handy to learn how they are implemented and how to use them, which is fairly easy (an example is provided).
+The only pitfall is that lwIP requires a way to mark semaphores as being 'invalid'.
+I don't know what this is used for, but we need to implement it so...
+
+## sys_arch.h
+For semaphores you only need to provide one thing : the definition of the semaphore type.
+I used a structure containing a pointer to an `OS_EVENT`, which is the 'real' semaphore and a validity flag, which is simply an integer.
+Put the following in `sys_arch.h`.
+{% highlight c %}
+typedef struct {
+    OS_EVENT*   sem;
+    int         is_valid;
+} sys_sem_t;
+{% endhighlight %}
+
+## sys_arch.c
+
+Now we have to provide implementations of semaphores functions.
+The complete list of functions that you need to implement can be found in `doc/sys_arch.txt`.
+The first function that we need to provide is the one used to create a new sempahore.
+It takes the semaphore's initial value as a parameter.
+
+{% highlight c %}
+err_t sys_sem_new(sys_sem_t *pSem, u8_t count)
+{
+    pSem->sem = OSSemCreate((INT16U)count);
+    LWIP_ASSERT("OSSemCreate ", pSem->sem != NULL);
+    pSem->is_valid = 1;
+    return ERR_OK;
+}
+{% endhighlight %}
+
+The second function that we need to provide is less trivial : it has to wait until the semaphore becomes available or a given timeout is reached.
+The return value is either the time we waited on the semaphore or `SYS_ARCH_TIMEOUT` if there was a timeout.
+We also need to convert the timeout value, since lwIP's timeouts are always in microseconds where UC/OS-II's timeouts are alway given in scheduler ticks.
+So far I have yet to implement the measurement of the waited time.
+I have an idea about how to do it, but I have still to test it (Update: in 2015 we switched to another OS so it won't be done).
+{% highlight c %}
+u32_t sys_arch_sem_wait(sys_sem_t *sem, u32_t timeout)
+{
+    INT8U  ucErr;
+    INT32U ucos_timeout;
+
+    /* Convert lwIP timeout (in milliseconds) to uC/OS-II timeout (in OS_TICKS) */
+    if(timeout) {
+        ucos_timeout = (timeout * OS_TICKS_PER_SEC)/1000;
+        if(ucos_timeout < 1)
+            ucos_timeout = 1;
+        else if(ucos_timeout > 65535)
+            ucos_timeout = 65535;
+    } else {
+        ucos_timeout = 0;
+    }
+
+    OSSemPend(sem->sem, ucos_timeout, &ucErr );
+    if(ucErr == OS_TIMEOUT) {
+        timeout = SYS_ARCH_TIMEOUT;
+    } else {
+        /* Calculate time we waited for the message to arrive. */
+        /* TODO: we cheat and just pretend that we waited for long! */
+        timeout = 1;
+    }
+    return timeout;
+}
+{% endhighlight %}
+
+The next function we need to provide is the opposite of the previous one : it realises the *post* operation, while the previous implemented the *pend* operation.
+Here again, we can use an example from the reference manual.
+
+{% highlight c %}
+void sys_sem_signal(sys_sem_t *sem)
+{
+    OSSemPost(sem->sem);
+}
+{% endhighlight %}
+
+We then implement two functions to test if a sempahore is valid and to mark it as invalid.
+As UC/OS-II does not provide a standard way to implement it, we had to add a validity flag to the semaphore definition, which is used to implement those two functions.
+
+{% highlight c %}
+int sys_sem_valid(sys_sem_t *sem)
+{
+    return sem->is_valid;
+}
+
+void sys_sem_set_invalid(sys_sem_t *sem)
+{
+    sem->is_valid = 0;
+}
+{% endhighlight %}
+
+The last step to implement about semaphores is the deletion of a semaphore.
+{% highlight c %}
+void sys_sem_free (sys_sem_t *sem)
+{
+    INT8U     ucErr;
+
+    OSSemDel(sem->sem, OS_DEL_NO_PEND, &ucErr);
+    LWIP_ASSERT("OSSemDel ", ucErr == OS_NO_ERR);
+}
+{% endhighlight %}
+
+# Mailboxes
+A mailbox is a software construct used in multithreaded programming to exchange data between two tasks. The UC/OS-II manual defines two types of mailboxes :
+
+* *Mailboxes* A mailbox is a variable in which a task can put a value to be read by another task.
+    Read and write access to it is atomic, and a task can pend on it (wait for it to receive something).
+* *Mail queues* A mail queue is very similar to a mail box, the main difference being that only one value at a time can be put in a mailbox, while a mail queue can store several messages and deliver them in a FIFO fashion.
+
+## sys_arch.h
+_Note:_ After reading lwIP manual, it is very clear that what UC/OS-II calls a mail queue is called a mailbox in lwIP.
+
+Another important problem is that lwIP requires the mailing queue implementation to be able to exit immediatly if the queue is already full, which is not supported by UC/OS-II.
+To implement this behaviour, we use a counting semaphore which stores the number of available slots in the mail queue.
+If a thread wants to write to the queue, it must first acquire the semaphore, then it can safely write to the queue.
+When a tasks reads an item from the queue, it will post to the semaphore to tell every waiting task that a slot is now available in the queue.
+The last feature we need to add to the UC/OS-II queues is a validity flag, similar to the one used for the semaphores.
+In summary the structure looks like this :
+
+{% highlight c %}
+typedef struct {
+    /** The mail queue itself. */
+    OS_EVENT*   pQ;
+    /** The elements in the queue. */
+    void*       pvQEntries[LWIP_Q_SIZE];
+    /** The semaphore used to count the number of available slots. */
+    OS_EVENT*   Q_full;
+    /** The validity flag. */
+    int         is_valid;
+} sys_mbox_t;
+{% endhighlight %}
+
+## sys_arch.c
+First of all, let's implement mail queue creation.
+We need to create a queue, but also a counting semaphore that will be initialized to the queue size.
+
+{% highlight c %}
+err_t sys_mbox_new(sys_mbox_t *mbox, int size)
+{
+    mbox->pQ = OSQCreate(mbox->pvQEntries, LWIP_Q_SIZE);
+    LWIP_ASSERT("OSQCreate", mbox->pQ != NULL );
+    mbox->Q_full = OSSemCreate(LWIP_Q_SIZE);
+    LWIP_ASSERT("OSSemCreate", mbox->Q_full != NULL );
+
+    mbox->is_valid = 1;
+    return ERR_OK;
+}
+{% endhighlight %}
+We can then implement blocking posting to the queue.
+To post in a queue, we have to wait on the associated semaphore to have an available slot.
+For this first function, we will do a blocking semaphore wait.
+
+{% highlight c %}
+void sys_mbox_post(sys_mbox_t *mbox, void *msg)
+{
+    INT8U status;
+
+    /* Wait for an available slot in the queue. */
+    OSSemPend(mbox->Q_full, 0, &status);
+
+    /* Posts the message to the queue. */
+    status = OSQPost(mbox->pQ, msg);
+    LWIP_ASSERT("OSQPost", status == OS_NO_ERR);
+}
+{% endhighlight %}
+
+After that, let's proceed to the non-blocking posting to the queue.
+This is where our semaphore gets useful, as we can ask UC/OS-II "if this semaphore is immediately available, take it, otherwise return an error code", which we cannot do with queues.
+
+{% highlight c %}
+err_t sys_mbox_trypost(sys_mbox_t *mbox, void *msg)
+{
+    INT8U status;
+
+    if(OSSemAccept(mbox->Q_full)) {
+        status = OSQPost(mbox->pQ, msg);
+        LWIP_ASSERT("OSQPost", status == OS_NO_ERR);
+    } else {
+        return ERR_MEM;
+    }
+
+    return ERR_OK;
+}
+{% endhighlight %}
+
+Ok, writing to the queue is now implemented, we should proceed to implementing blocking and non blocking reading of the queue.
+Both of them will also operate on the semaphore, but they should do it in reverse order than the writing block : they start by reading from the queue, then posting to the semaphore, which ensures
+that the semaphore will never have more counts than free slots in the queue.
+Let's start with the blocking variant, which have a timeout.
+It should return the time the task had to wait for a message to arrive, or `SYS_ARCH_TIMEOUT` in case of timeout.
+
+{% highlight c %}
+u32_t sys_arch_mbox_fetch(sys_mbox_t *mbox, void **msg, u32_t timeout)
+{
+    INT8U ucErr;
+    INT32U ucos_timeout;
+    void *temp;
+
+    /* convert LwIP timeout (in milliseconds) to uC/OS-II timeout (in OS_TICKS) */
+    if(timeout) {
+        ucos_timeout = (timeout * OS_TICKS_PER_SEC)/1000;
+        if(ucos_timeout < 1)
+            ucos_timeout = 1;
+        else if(ucos_timeout > 65535)
+            ucos_timeout = 65535;
+    } else {
+        ucos_timeout = 0;
+    }
+
+    temp = OSQPend(mbox->pQ, ucos_timeout, &ucErr);
+
+    /* Tells tasks waiting because of a full buffer that the buffer is not full
+     * anymore. */
+    OSSemPost(mbox->Q_full);
+
+    if(msg) {
+        *msg = temp;
+    }
+
+    if(ucErr == OS_TIMEOUT) {
+        timeout = SYS_ARCH_TIMEOUT;
+    } else {
+        LWIP_ASSERT("OSQPend ", ucErr == OS_NO_ERR);
+        /* Calculate time we waited for the message to arrive. */
+        /* XXX: we cheat and just pretend that we waited for long! */
+        timeout = 1;
+    }
+
+    return timeout;
+}
+{% endhighlight %}
+
+The non-blocking version is shorter, but very similar:
+
+{% highlight c %}
+u32_t sys_arch_mbox_tryfetch(sys_mbox_t *mbox, void **msg)
+{
+    INT8U ucErr;
+    void *temp;
+
+    temp = OSQAccept(mbox->pQ, &ucErr);
+
+    if(temp == NULL && ucErr == OS_Q_EMPTY)
+        return SYS_MBOX_EMPTY;
+
+    /* Tells tasks waiting because of a full buffer that the buffer is not full
+     * anymore. */
+    OSSemPost(mbox->Q_full);
+
+    *msg = temp;
+
+    return 0;
+}
+{% endhighlight %}
+
+Finally we write the functions to mark a queue as invalid, and to delete it.
+
+{% highlight c %}
+int sys_mbox_valid(sys_mbox_t *mbox)
+{
+    LWIP_ASSERT("sys_mbox_valid", mbox != NULL);
+    return mbox->is_valid;
+}
+
+void sys_mbox_set_invalid(sys_mbox_t *mbox)
+{
+    LWIP_ASSERT("sys_mbox_valid", mbox != NULL);
+    mbox->is_valid = 0;
+}
+
+void sys_mbox_free(sys_mbox_t *mbox)
+{
+    INT8U     ucErr;
+
+    LWIP_ASSERT("sys_mbox_free", mbox != NULL);
+    OSQFlush(mbox->pQ);
+
+    OSQDel(mbox->pQ, OS_DEL_NO_PEND, &ucErr);
+    LWIP_ASSERT("OSQDel", ucErr == OS_NO_ERR);
+
+    OSSemDel(mbox->Q_full, OS_DEL_NO_PEND, &ucErr);
+    LWIP_ASSERT("OSSemDel", ucErr == OS_NO_ERR);
+}
+{% endhighlight %}
+
+# Completed port
+The completed port can be found on [https://www.github.com/cvra/lwip_ucos2](Github), along with other projects we developped at the CVRA.
+
+A demo application using the port can also be found on [https://www.github.com/antoinealb/lwip_test](My Github Account).
+
+# Credits
+Our port of lwIP is based on original work by [http://geocities.com/michaelanburaj/](Michael Anburaj), and was modified to suit recent versions of UC/OS-II and lwIP.
+
