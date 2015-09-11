@@ -1,7 +1,4 @@
 
-- name: GitHub
-  logo: github.png
-  what: "GitHub hosts all of our code, both open source and private."
 
 - name: Sick
   logo: sick.png
@@ -105,6 +102,9 @@
   what: "Spirit Fever printed the custom polos and hoodies of the team."
 
 
+- name: GitHub
+  logo: github.png
+  what: "GitHub hosts all of our code, both open source and private."
 
 
 
