@@ -1,0 +1,18 @@
+---
+layout: page
+title: Our sponsors
+---
+
+{% for sponsor in site.data.sponsors %}
+
+    {% cycle '<div class="row">', '' %}
+
+    <div class="large-5 columns center-text">
+        <img alt="{{ sponsor.name }}" src="{{ sponsor.logo }}" />
+        {{ sponsor.what }}
+    </div>
+
+    {% cycle '<div class="large-2 small-0 columns"></div>', '' %}
+
+    {% cycle '', '</div>' %}
+{% endfor %}

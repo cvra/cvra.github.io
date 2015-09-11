@@ -34,5 +34,8 @@
     - subtitle: "2007"
       subhref: "/coupe/2007.html"
 
+- title: "Sponsors"
+  href: "/sponsors.html"
+
 - title: "Plan d'accès"
   href: "/map.html"
