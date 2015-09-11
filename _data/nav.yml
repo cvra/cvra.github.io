@@ -4,6 +4,9 @@
 - title: "blog"
   href: "/blog/"
 
+- title: "about us"
+  href: "/about_us/about_us.html"
+
 - title: "Robots"
   url: "/coupe"
   subcategories:
