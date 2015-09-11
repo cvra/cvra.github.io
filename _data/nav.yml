@@ -31,5 +31,8 @@
     - subtitle: "2008"
       subhref: "/coupe/2008.html"
 
+    - subtitle: "2007"
+      subhref: "/coupe/2007.html"
+
 - title: "Plan d'accès"
   href: "/map.html"
