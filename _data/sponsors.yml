@@ -1,7 +1,121 @@
-- name: GitHub
-  logo: /images/sponsors/github.png
-  what: "GitHub hosts all of our code, both open source and private."
 
 - name: GitHub
-  logo: /images/sponsors/github.png
+  logo: github.png
   what: "GitHub hosts all of our code, both open source and private."
+
+- name: Sick
+  logo: sick.png
+  what: "All the sensors of the robots are made by Sick, including the brand new LIDAR used for object recognition. "
+
+- name: Claude Piguet SA
+  logo: claudePiguet.png
+  what: "Claude Piguet SA made the custom tyres we use on our wheels."
+
+
+- name: City of Renens
+  logo: renens.png
+  what: "The city of Renens is providing us the facilities in which we develop our projects."
+
+- name: Swiss RepRap
+  logo: swissreprap.png
+  what: "Swiss RepRap offered us a discount on our 3D printer and related materials."
+
+- name: CPNV
+  logo: cpnv.png
+  what: "The CPNV let us use their 3D printing machine."
+
+- name: AME Optics
+  logo: ame.png
+  what: "AME Optics 3D printed some transparent parts for us."
+
+- name: General Microtechnology & Photonics
+  logo: gmp.png
+  what: "GMP provided us mirrors for our obstacle avoidance system."
+
+- name: Igus
+  logo: igus.png
+  what: "Igus gave us precision screws."
+
+- name: GrabCAD
+  logo: grabcad.png
+  what: "GrabCAD hosts all the design documents of the robot in their PDM."
+
+- name: Faulhaber
+  logo: faulhaber.png
+  what: "Faulhaber is providing all the motors on our robots."
+
+- name: Hiwin
+  logo: hiwin.png
+  what: TODO
+
+- name: Omron
+  logo: omron.png
+  what: "Omron gave us all the electronics involved in the construction of our CNC mill."
+
+- name: Thomas Gardner Denver
+  logo: gardnerDenverThomas.png
+  what: "Thomas Gardner Denver gave us the vaccum pumps we used from 2011 to 2014."
+
+- name: Rittal
+  logo: rittal.png
+  what: "Rittal built the electrical enclosure of our CNC mill."
+
+- name: PMD
+  logo: pmd.png
+  what: "PMD offered us one of their 3D camera."
+
+- name: Arrow
+  logo: arrow.png
+  what: "Arrow provided some of the electronic parts."
+
+- name: Swiss CNC technologies
+  logo: SwissCNCTechnologies.png
+  what: "Swiss CNC technologies machined the most complex parts of our robot out of aviation-grade aluminium."
+
+- name: Festo
+  logo: festo.png
+  what: "Festo provides succion cups and vacuum tubes we use."
+
+- name: Techniques Laser
+  logo: techniquesLaser.png
+  what: "Techniques Laser SA offered us to laser cut all the metal sheets of the robot."
+
+- name: SKF
+  logo: skf.png
+  what: "SKF manufactures the ball bearing we use from 2008."
+
+- name: Matisa
+  logo: matisa.png
+  what: "Matisa is making the custom chassis of our CNC mill."
+
+- name: Toradex
+  logo: toradex.png
+  what: "Toradex manufactures the embedded PC we use in our robots."
+
+- name: Bossard
+  logo: bossard.png
+  what: "Bossard gave us the screws used in our projects."
+
+- name: Posic
+  logo: posic.png
+  what: "Posic offerec us their ultra-thin quadrature encoders, used by the robot for positioning and control. "
+
+- name: Spirit Fever
+  logo: SpiritFever.png
+  what: "Spirit Fever printed the custom polos and hoodies of the team."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
