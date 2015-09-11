@@ -22,6 +22,7 @@ exclude: [.bundle, bin, vendor, Gemfile, Gemfile.lock, Rakefile, s3_website.yml,
 markdown: kramdown
 kramdown:
   input: GFM
+highlighter: pygments
 
 destination: _site
 
