@@ -11,7 +11,7 @@
 
 - name: City of Renens
   logo: renens.png
-  what: "The city of Renens is providing us the facilities in which we develop our projects."
+  what: "The city of Renens is providing us with the facilities in which we develop our projects."
 
 - name: Swiss RepRap
   logo: swissreprap.png
@@ -27,7 +27,7 @@
 
 - name: General Microtechnology & Photonics
   logo: gmp.png
-  what: "GMP provided us mirrors for our obstacle avoidance system."
+  what: "GMP provided us with mirrors for our obstacle avoidance system."
 
 - name: Igus
   logo: igus.png
@@ -43,11 +43,11 @@
 
 - name: Hiwin
   logo: hiwin.png
-  what: TODO
+  what: "Hiwin provided us with ballscrews and linear guideways for our CNC mill."
 
 - name: Omron
   logo: omron.png
-  what: "Omron gave us all the electronics involved in the construction of our CNC mill."
+  what: "Omron gave us all the automation devices involved in the build of our CNC mill."
 
 - name: Thomas Gardner Denver
   logo: gardnerDenverThomas.png
@@ -67,7 +67,7 @@
 
 - name: Swiss CNC technologies
   logo: SwissCNCTechnologies.png
-  what: "Swiss CNC technologies machined the most complex parts of our robot out of aviation-grade aluminium."
+  what: "Swiss CNC technologies machined the most complex parts of our robot out of 7000-series aluminium."
 
 - name: Festo
   logo: festo.png
@@ -79,7 +79,7 @@
 
 - name: SKF
   logo: skf.png
-  what: "SKF manufactures the ball bearing we use from 2008."
+  what: "SKF manufactures the ball bearing we use since 2008."
 
 - name: Matisa
   logo: matisa.png
@@ -95,7 +95,7 @@
 
 - name: Posic
   logo: posic.png
-  what: "Posic offerec us their ultra-thin quadrature encoders, used by the robot for positioning and control. "
+  what: "Posic offered us their ultra-thin quadrature encoders, used by the robot for positioning and control. "
 
 - name: Spirit Fever
   logo: SpiritFever.png
