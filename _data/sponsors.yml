@@ -33,10 +33,6 @@
   logo: igus.png
   what: "Igus gave us precision screws."
 
-- name: GrabCAD
-  logo: grabcad.png
-  what: "GrabCAD hosts all the design documents of the robot in their PDM."
-
 - name: Faulhaber
   logo: faulhaber.png
   what: "Faulhaber is providing all the motors on our robots."
@@ -64,10 +60,6 @@
 - name: Arrow
   logo: arrow.png
   what: "Arrow provided some of the electronic parts."
-
-- name: Swiss CNC Technologies
-  logo: SwissCNCTechnologies.png
-  what: "Swiss CNC Technologies machined the most complex parts of our robot."
 
 - name: Festo
   logo: festo.png
@@ -100,22 +92,3 @@
 - name: Spirit Fever
   logo: SpiritFever.png
   what: "Spirit Fever printed the custom polos and hoodies of the team."
-
-
-- name: GitHub
-  logo: github.png
-  what: "GitHub hosts all of our code, both open source and private."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
