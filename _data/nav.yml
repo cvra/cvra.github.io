@@ -46,6 +46,9 @@
     - subtitle: "2002"
       subhref: "/coupe/2002.html"
 
+    - subtitle: "2001"
+      subhref: "/coupe/2001.html"
+
 - title: "Sponsors"
   href: "/sponsors.html"
 
