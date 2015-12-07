@@ -16,7 +16,7 @@ This allows us to build relatively complex robots such as Debra, our main compet
 Our club is a strong supporter of open source and we try to make our projects available under a free license (MIT or Creative Commons):
 
 <ul>
-<li>We host all of our code on <a href="https://github.com/cvra/">Github</a>.</li>
+<li>We host all of our code and our electronics design on <a href="https://github.com/cvra/">Github</a>.</li>
 <li>Some of our mechanical designs are available on <a href="https://grabcad.com/cvra-1/projects">GrabCAD</a>.</li>
 </ul>
 </div>
