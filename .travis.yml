@@ -2,4 +2,6 @@ sudo: false # use docker
 language: ruby
 rvm:
     - 2.1.0
-script: "bundle exec jekyll build"
+script:
+    - bundle exec jekyll build
+    - bundle exec check-links _site/ --no-warnings --max-threads 1
