@@ -10,7 +10,7 @@ To install all other needed tools by running `bundle install --path vendor --bin
 
 ## Running the dev version
 
-Start the dev server by running `./bin/jekyll serve`.
+Start the dev server by running `./bin/jekyll serve --drafts`.
 The site automatically rebuilds on any change.
 
 
