@@ -11,6 +11,11 @@ author: Antoine
 * Beacons ?
 * You should know where to cut corners. If you don't, read the rest.
 * Download all the relevant documentation/datasheet/code before going to the contest as you may not have fast internet on the contest location (or any internet at all).
+* Document everything, but don't over document.
+    You'll need to keep track of your all your doc so try having fewer documents and don't be too verbose.
+    Prefer lists and drawings over long paragraphs and descriptions.
+* Communicate a lot, but never prolongate meetings more than they need.
+    Once you're done updating the team or solving your problem, go back to work.
 
 #Mechanics
 
