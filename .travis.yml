@@ -4,4 +4,3 @@ rvm:
     - 2.1.0
 script:
     - bundle exec jekyll build --drafts
-    - bundle exec check-links _site/ --no-warnings --max-threads 1
