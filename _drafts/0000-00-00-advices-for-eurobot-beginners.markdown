@@ -3,14 +3,33 @@ layout: post
 title: Advices for Eurobot beginners
 author: Antoine
 ---
-#General
-* Honestly assess your skills, time and budget
-* KISS: Keep it Simple and Stupid
-* Base meta: reliable robots win
-* Two robots for first year are big no no
-* Beacons ?
+
+#I want to take part in Eurobot, now what ?
+You should start by honestly assessing your skills and your budget (time and money).
+Building a robot is a huge task, and while I think it is a very good project, it is not fun if the robot is not finished because of bad planning.
+
+Something you need to keep in mind when taking part in Eurobot is that reliability is more important than everything.
+A reliable robot scoring a few points *every* game can make a very good score and even go into the finals phase.
+On the other hand, an unreliable robot probably won't go very far.
+This is mostly due to the low number of game you will play (around 5), meaning every total failure will have a huge opportunity cost.
+
+The logical conclusion of this is that your robot should be reliable before being super complex.
+
+1. In fact, the correct build order in Eurobot should be something like this:
+    First, stop to think and analyze your problem.
+    A small amount of upfront design can save you a lot of time later.
+    Be careful to avoid paralysis by analysis where you stay too long in the design phase to think of every detail.
+2. Create a first quick prototype.
+    It does not need to be perfect, optimal or beautiful.
+3. Make it pretty, fix problems, etc.
+    This might require going back to step 1.
+4. Add functionalities to make it more complex (optional).
+
+It also implies that you should avoid building two robots for your first participation, because you probably don't have the ressources to build two reliables robot.
+I know you might feel like this will lower your chances in the contest but we have shown [in 2012](/coupe/2012.html) that you can qualify to European finals with only one robot.
+On the same principle, stay away from complex beacon systems, but a simple one can be more reliable and easier than using sensors for opponent avoidance.
+
 * You should know where to cut corners. If you don't, read the rest.
-* Download all the relevant documentation/datasheet/code before going to the contest as you may not have fast internet on the contest location (or any internet at all).
 * Document everything, but don't over document.
     You'll need to keep track of your all your doc so try having fewer documents and don't be too verbose.
     Prefer lists and drawings over long paragraphs and descriptions.
@@ -51,13 +70,17 @@ You should stick to quality hardware for motors and sensor if you can afford it.
 
 #Software
 
-* My main advice is to keep it simple here and only do complicated stuff later.
-* Store your code in a version control system.
-    This is the *single most important* advice for your programming team.
+##Version control
+
+* The **single most important** advice for programmers working on Eurobot, or any other project is to store your code in a Version Control System (VCS).
+    A VCS allows you to store various versions ("revisions") of your code, compare them, go back to them later, share them with your coworkers, etc.
+    Too often have I seen software teams saying "It used to work but I cannot make it work again!".
+    Imagine how powerful it would be to be able to go back to what worked in about 4 seconds.
     Doing this allows you to freely experiment with new ideas without having to fear breaking existing code.
     It also permits several team members to work in parallel and merge their work later on.
-    Finally it also doubles as a backup of your code, in case you make a mistake or experience a drive crash before the contest.
     The choice of the software is not critical but sticking with Git or Mercurial is a good idea as they have a huge community and allow you to work without internet connection.
+
+* As for the rest of your robot, first make it simple, then make it reliable then make it complicated
 * Write good code.
     While this is a highly subjective matter about which a lot have been written, a global concensus seems to be "optimize for reliability."
     While it might be counter-intuitive, most of the programming time is spent reading code.
@@ -84,6 +107,8 @@ You should stick to quality hardware for motors and sensor if you can afford it.
 * Working in pair is funnier and faster than working alone.
     This seems counterintuitive at first because you are effectively using two team members to perform a single task but it is a documented industry practice (just search for Pair Programming on your favorite search engine).
 
+#Misc
+* Download all the relevant documentation/datasheet/code before going to the contest as you may not have fast internet on the contest location (or any internet at all).
 
 #Conclusion
 
