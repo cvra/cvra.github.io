@@ -65,10 +65,6 @@
   logo: festo.png
   what: "Festo provides succion cups and vacuum tubes we use."
 
-- name: Techniques Laser
-  logo: techniquesLaser.png
-  what: "Techniques Laser SA offered us to laser cut all the metal sheets of the robot."
-
 - name: SKF
   logo: skf.png
   what: "SKF manufactures the ball bearing we use since 2008."
