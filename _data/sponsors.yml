@@ -3,88 +3,110 @@
 - name: Sick
   logo: sick.png
   what: "All the sensors of the robots are made by Sick, including the brand new LIDAR used for object recognition. "
+  url: https://www.sick.com/
 
 - name: Claude Piguet SA
   logo: claudePiguet.png
   what: "Claude Piguet SA made the custom tyres we use on our wheels."
+  url: http://www.claude-piguet.ch/
 
 
 - name: City of Renens
   logo: renens.png
   what: "The city of Renens is providing us with the facilities in which we develop our projects."
+  url: http://www.renens.ch/
 
 - name: Swiss RepRap
   logo: swissreprap.png
   what: "Swiss RepRap offered us a discount on our 3D printer and related materials."
+  url: http://swissreprap.com/
 
 - name: CPNV
   logo: cpnv.png
   what: "The CPNV let us use their 3D printing machine."
+  url: http://www.cpnv.ch
 
 - name: AME Optics
   logo: ame.png
   what: "AME Optics 3D printed some transparent parts for us."
+  url: http://ame-optics.ch
 
 - name: General Microtechnology & Photonics
   logo: gmp.png
   what: "GMP provided us with mirrors for our obstacle avoidance system."
+  url: http://www.gmp.ch
 
 - name: Igus
   logo: igus.png
   what: "Igus gave us precision screws."
+  url: http://www.igus.ch/
 
 - name: Faulhaber
   logo: faulhaber.png
   what: "Faulhaber is providing all the motors on our robots."
+  url: https://www.faulhaber.com/
 
 - name: Hiwin
   logo: hiwin.png
   what: "Hiwin provided us with ballscrews and linear guideways for our CNC mill."
+  url: http://www.hiwin.ch/
 
 - name: Omron
   logo: omron.png
   what: "Omron gave us all the automation devices involved in the build of our CNC mill."
+  url: http://www.omron.ch
 
 - name: Thomas Gardner Denver
   logo: gardnerDenverThomas.png
   what: "Thomas Gardner Denver gave us the vaccum pumps we used from 2011 to 2014."
+  url: http://www.gd-thomas.com/
 
 - name: Rittal
   logo: rittal.png
   what: "Rittal built the electrical enclosure of our CNC mill."
+  url: http://www.rittal.com/
 
 - name: PMD
   logo: pmd.png
   what: "PMD offered us one of their 3D camera."
+  url: http://www.pmdtec.com/
 
 - name: Arrow
   logo: arrow.png
   what: "Arrow provided some of the electronic parts."
+  url: https://www.arrow.com/
 
 - name: Festo
   logo: festo.png
   what: "Festo provides succion cups and vacuum tubes we use."
+  url: http://www.festo.ch
 
 - name: SKF
   logo: skf.png
   what: "SKF manufactures the ball bearing we use since 2008."
+  url: http://www.skf.com
 
 - name: Matisa
   logo: matisa.png
   what: "Matisa is making the custom chassis of our CNC mill."
+  url: http://www.matisa.ch/
 
 - name: Toradex
   logo: toradex.png
   what: "Toradex manufactures the embedded PC we use in our robots."
+  url: https://www.toradex.com/
 
 - name: Bossard
   logo: bossard.png
   what: "Bossard gave us the screws used in our projects."
+  url: http://www.bossard.com
 
 - name: Posic
   logo: posic.png
   what: "Posic offered us their ultra-thin quadrature encoders, used by the robot for positioning and control. "
+  url: http://www.posic.com/
 
 - name: Spirit Fever
   logo: SpiritFever.png
   what: "Spirit Fever printed the custom polos and hoodies of the team."
+  url: http://www.spirit-fever.com/

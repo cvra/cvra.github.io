@@ -8,7 +8,7 @@ title: Sponsors
     {% cycle '<div class="row">', '' %}
 
     <div class="sponsor large-5 columns center-text">
-        <img alt="{{ sponsor.name }}" src="/images/sponsors/{{ sponsor.logo }}" /></p>
+        <a href=" {{ sponsor.url }}"><img alt="{{ sponsor.name }}" src="/images/sponsors/{{ sponsor.logo }}" /></p></a>
         {{ sponsor.what }}
     </div>
 
