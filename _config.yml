@@ -20,7 +20,7 @@ exclude: [.bundle, bin, vendor, Gemfile, Gemfile.lock, Rakefile, s3_website.yml,
 
 # Build settings
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 
 destination: _site
 
