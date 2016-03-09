@@ -73,7 +73,7 @@
 
 - name: Arrow
   logo: arrow.png
-  what: "Arrow provided some of the electronic parts."
+  what: "Arrow provided the Beaglone Black used in our small robot, Goldorak."
   url: https://www.arrow.com/
 
 - name: Festo
