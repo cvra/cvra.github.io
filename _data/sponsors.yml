@@ -91,10 +91,10 @@
   what: "Matisa is making the custom chassis of our CNC mill."
   url: http://www.matisa.ch/
 
-- name: Toradex
-  logo: toradex.png
-  what: "Toradex manufactures the embedded PC we use in our robots."
-  url: https://www.toradex.com/
+- name: Intel
+  logo: intel.png
+  url: http://www.intel.com/content/www/us/en/nuc/overview.html
+  what: "Intel provided us two of their latest NUC boards, which will be used to power Debra, our bigger robot."
 
 - name: Bossard
   logo: bossard.png
