@@ -94,7 +94,7 @@
 - name: Intel
   logo: intel.png
   url: http://www.intel.com/content/www/us/en/nuc/overview.html
-  what: "Intel provided us two of their latest NUC boards, which will be used to power Debra, our bigger robot."
+  what: "Intel provided us two of their latest NUC boards, with their associated SSDs. They will be used to power Debra, our bigger robot."
 
 - name: Bossard
   logo: bossard.png
