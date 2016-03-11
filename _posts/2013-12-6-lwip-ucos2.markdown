@@ -379,10 +379,10 @@ void sys_mbox_free(sys_mbox_t *mbox)
 {% endhighlight %}
 
 # Completed port
-The completed port can be found on [https://www.github.com/cvra/lwip_ucos2](Github), along with other projects we developped at the CVRA.
+The completed port can be found on [Github](https://www.github.com/cvra/lwip_ucos2, along with other projects we developped at the CVRA.
 
-A demo application using the port can also be found on [https://www.github.com/antoinealb/lwip_test](My Github Account).
+A demo application using the port can also be found on [Antoine's Github](https://www.github.com/antoinealb/lwip_test).
 
 # Credits
-Our port of lwIP is based on original work by [http://geocities.com/michaelanburaj/](Michael Anburaj), and was modified to suit recent versions of UC/OS-II and lwIP.
+Our port of lwIP is based on original work by [Michael Anburaj](http://geocities.com/michaelanburaj/), and was modified to suit recent versions of UC/OS-II and lwIP.
 
