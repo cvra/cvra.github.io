@@ -5,6 +5,12 @@
   what: "All the sensors of the robots are made by Sick, including the brand new LIDAR used for object recognition. "
   url: https://www.sick.com/
 
+- name: Intel
+  logo: intel.png
+  url: http://www.intel.com/content/www/us/en/nuc/overview.html
+  what: "Intel provided us two of their latest NUC boards, with their associated SSDs. They will be used to power Debra, our bigger robot."
+
+
 - name: Claude Piguet SA
   logo: claudePiguet.png
   what: "Claude Piguet SA made the custom tyres we use on our wheels."
@@ -90,11 +96,6 @@
   logo: matisa.png
   what: "Matisa is making the custom chassis of our CNC mill."
   url: http://www.matisa.ch/
-
-- name: Intel
-  logo: intel.png
-  url: http://www.intel.com/content/www/us/en/nuc/overview.html
-  what: "Intel provided us two of their latest NUC boards, with their associated SSDs. They will be used to power Debra, our bigger robot."
 
 - name: Bossard
   logo: bossard.png
