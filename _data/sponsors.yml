@@ -27,11 +27,6 @@
   what: "Swiss RepRap offered us a discount on our 3D printer and related materials."
   url: http://swissreprap.com/
 
-- name: CPNV
-  logo: cpnv.png
-  what: "The CPNV let us use their 3D printing machine."
-  url: http://www.cpnv.ch
-
 - name: AME Optics
   logo: ame.png
   what: "AME Optics 3D printed some transparent parts for us."
@@ -86,11 +81,6 @@
   logo: festo.png
   what: "Festo provides succion cups and vacuum tubes we use."
   url: http://www.festo.ch
-
-- name: SKF
-  logo: skf.png
-  what: "SKF manufactures the ball bearing we use since 2008."
-  url: http://www.skf.com
 
 - name: Matisa
   logo: matisa.png
