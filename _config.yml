@@ -27,6 +27,7 @@ destination: _site
 gems:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-redirect-from
 
 feed:
   path: atom.xml
