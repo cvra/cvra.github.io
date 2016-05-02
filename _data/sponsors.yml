@@ -27,11 +27,6 @@
   what: "Swiss RepRap offered us a discount on our 3D printer and related materials."
   url: http://swissreprap.com/
 
-- name: AME Optics
-  logo: ame.png
-  what: "AME Optics 3D printed some transparent parts for us."
-  url: http://ame-optics.ch
-
 - name: General Microtechnology & Photonics
   logo: gmp.png
   what: "GMP provided us with mirrors for our obstacle avoidance system."
