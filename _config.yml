@@ -8,7 +8,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Witty description here.
 
 baseurl:
-url: https://cvra.github.io
+url: http://cvra.ch
 
 header: yes
 header_xl: images/banner.png
