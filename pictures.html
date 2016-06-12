@@ -8,7 +8,7 @@ title: Pictures
     {% cycle '<div class="row">', '' %}
         <a href="{{ album.href }}">
             <div class="large-6 columns thumbnail">
-                <img src="{{ album.thumbnail }}">
+                <img src="{{ album.thumbnail }}" alt="{{ album.title }} {{ album.year }}">
                 <h3>
                     <span>
                         {{ album.title }}
