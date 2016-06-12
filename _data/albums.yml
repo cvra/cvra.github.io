@@ -1,8 +1,40 @@
-- title: "Coupe 2016 local"
-  thumbnail: "/images/about_us.jpg"
-- title: "Coupe 2014 Yverdon"
-  thumbnail: "/images/2014/debra4.jpg"
-- title: "Coupe 2013"
-  thumbnail: "/images/2013/debra.jpg"
-- title: "Coupe 2010"
-  thumbnail: "/images/2010/lollipop.jpg"
+- title: "Headquarters"
+  year: 2016
+  thumbnail: "/images/album_thumbnails/2016_au_local.jpg"
+- title: "SwissEurobot in Yverdon-les-Bains"
+  year: 2016
+  thumbnail: "/images/album_thumbnails/2016_swisseurobot.jpg"
+
+- title: "Headquarters"
+  year: 2015
+  thumbnail: "/images/album_thumbnails/2015_au_local.jpg"
+- title: "SwissEurobot in Yverdon-les-Bains"
+  year: 2015
+  thumbnail: "/images/album_thumbnails/2015_swisseurobot.jpg"
+
+- title: "Headquarters"
+  year: 2014
+  thumbnail: "/images/album_thumbnails/2014_au_local.jpg"
+- title: "Eurobot in Dresden"
+  year: 2014
+  thumbnail: "/images/album_thumbnails/2014_eurobot.jpg"
+- title: "SwissEurobot in Burgdorf"
+  year: 2014
+  thumbnail: "/images/album_thumbnails/2014_swisseurobot.jpg"
+
+- title: "Headquarters"
+  year: 2013
+  thumbnail: "/images/album_thumbnails/2013_au_local.jpg"
+- title: "All contests"
+  year: 2013
+  thumbnail: "/images/album_thumbnails/2013_contests.jpg"
+
+- title: "SwissEurobot - CVRA"
+  year: 2012
+  thumbnail: "/images/album_thumbnails/2012_swisseurobot_cvra.jpg"
+- title: "SwissEurobot - other teams"
+  year: 2012
+  thumbnail: "/images/album_thumbnails/2012_swisseurobot_others.jpg"
+- title: "Headquarters"
+  year: 2012
+  thumbnail: "/images/album_thumbnails/2012_au_local.jpg"
