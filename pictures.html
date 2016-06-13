@@ -1,0 +1,23 @@
+---
+layout: page
+title: Pictures
+---
+
+<div class="album">
+{% for album in site.data.albums %}
+    {% cycle '<div class="row">', '' %}
+        <a href="{{ album.href }}">
+            <div class="large-6 columns thumbnail">
+                <img src="{{ album.thumbnail }}" alt="{{ album.title }} {{ album.year }}">
+                <h3>
+                    <span>
+                        {{ album.title }}
+                        <span class='spacer'></span><br /><span class='spacer'></span>
+                        {{ album.year }}
+                    </span>
+                </h3>
+            </div>
+        </a>
+    {% cycle '', '</div>' %}
+{% endfor %}
+</div>
