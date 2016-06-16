@@ -15,6 +15,11 @@ We would like to thank MassChallenge Switzerland, Inartis and UniverCité for in
 
 Watch the pictures of the event in [our album](https://goo.gl/photos/TeTntYhAEUNJJysb7).
 
+<div class="ytvideo">
+<iframe width="640" height="360" src="https://www.youtube.com/embed/zTbEyH0-Y8A" frameborder="0" allowfullscreen></iframe>
+</div>
+
 ![Debra revealing the ceremony ribbon-cutting scissors](/images/album_thumbnails/2016_masschallenge.jpg)
 
 <small>Picture &copy; Inartis Foundation 2016</small>
+
