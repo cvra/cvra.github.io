@@ -26,7 +26,9 @@ It was dubbed **project Goldorak**, and the name stuck so the robot was named **
 This post goes through our journey, the limitations we hit when using [ROS](http://ros.org/) for Eurobot on a microcomputer (the [Beaglebone black](https://beagleboard.org/black)) and the lessons learned from it.
 
 
-## CAN on Linux
+## **ROS meets UAVCAN**
+
+### **CAN on Linux**
 
 The choice of an embedded computer was pretty straightforward.
 I had previously worked with the Beaglebone black and grew acquainted with it.
@@ -37,7 +39,7 @@ At first, we did the setup by hand, but later on we automated it using SaltStack
 Installing and setting up SocketCAN was quite easy.[^4]
 
 
-## Bridging UAVCAN with ROS
+### **Bridging UAVCAN with ROS**
 
 In order to use the motor boards we designed the previous year, our Beaglebone black had to speak [UAVCAN](http://uavcan.org/).
 We needed to send PID parameters and setpoints, but also received feedback if needed.
@@ -66,6 +68,9 @@ We can control the right wheel of the robot by sending a message over the `right
 One especially useful feedback is `/right_wheel/feedback/encoder` providing external incremental encoder values used for positioning.
 The `right_wheel/feedback_pid` namespace was dedicated to feedback for PID tuning which included setpoints along with measurements of the same quantity.
 
+
+### **PID tuning over CAN**
+
 Using RQT for plotting and using dynamic reconfigure to send PID parameters to the **_motor boards_**, we setup a nice interface to tune the PIDs of the motor board:
 
   - Setpoints and measured outputs are plotted in top left (PyQtGraph plot)
@@ -75,7 +80,7 @@ Using RQT for plotting and using dynamic reconfigure to send PID parameters to t
 ![PID tuning interface with Rviz and Dynamic reconfigure](/images/posts/goldorak-postmortem/PID_tuning.jpg)
 
 
-## Making Goldorak a ROS enabled robot
+## **Making Goldorak a ROS enabled robot**
 
 Once our differential base's motors were controllable through ROS nodes, and our PIDs were tuned, we were ready to build an abstraction of the wheelbase to be used for robot motion.
 
@@ -153,7 +158,7 @@ This was a simple model of the robot with two wheels, two caster links, the body
 ![Goldorak in Rviz](/images/posts/goldorak-postmortem/Goldorak_Rviz.png)
 
 
-## Using ROS navigation stack for Eurobot
+## **Using ROS navigation stack for Eurobot**
 
 So now we can control our robot, know where it is and visualise it in real time.
 Time to make it navigate!
@@ -188,7 +193,9 @@ By then, it was too late to change much in our approach to the problem.
 Retrospectively, a possible solution would have been to use the spare Intel NUC of Debra and connect it to the Beaglebone black, then have it run all nodes except the UAVCAN bridge which would run on the Beaglebone black.
 
 
-## Saving CPU resources on the Beaglebone black
+## **Computers are all fun and games until they are not**
+
+### **Saving CPU resources on the Beaglebone black**
 
 Now that our navigation was consuming up to 70% of CPU time on the Beaglebone black, we needed to think carefully about how we used our resources.
 We switched time critical nodes into nodelets to save some CPU time.
@@ -198,8 +205,7 @@ One major setback was that we weren't able to wrap the UAVCAN bridge into a sing
 We also played with **nice**, a Unix tool that allows you to set the priority of a process.
 This way we were able to give priority to control nodes.
 
-
-## Computers are all fun and games until they are not
+### **Beaglebone black's limitations as ROS platform**
 
 Along the journey, as we had more and more nodes nodes to build for our robot to run, the build time increased from a few seconds to ~20 seconds.
 This effect was more dramatic on the Beaglebone black, we went from a few tens of seconds to a full record of 20 minutes of painful compilation time.
@@ -217,7 +223,7 @@ You heretic, how dare you think about crosscompilation[^11].
 So if you were thinking about crosscompiling your ROS nodes, then think about something else to do with your life, maybe become a farmer and grow some corn: agriculture makes more sense than computer science, at least it's governed by laws of physics.
 
 
-## 2016 Competition summary
+## **2016 Competition summary**
 
 The swiss contest took place last May.
 With Goldorak, we intended to perform several actions:
@@ -245,7 +251,7 @@ Another common problem was the navigation oscillating around its goal at the 2nd
 In average, the small robot scored 31.4 points per match, well below the maximum 90 points envisioned at the design phase (70 if we don't count the door closing action).
 
 
-## Closing remarks
+## **Closing remarks**
 
 To finish this long article, here is a list of things to remember:
 
@@ -262,7 +268,7 @@ To finish this long article, here is a list of things to remember:
 
 
 
-## Footnotes and links
+## **Footnotes and links**
 
 [^0]: [DC Motor Controller boards with CAN Interface](https://github.com/cvra/motor-control-board)
 [^1]: [The just got back from conference effect](http://www.commitstrip.com/en/2016/04/26/the-just-got-back-from-a-conference-effect/)
