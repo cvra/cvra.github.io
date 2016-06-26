@@ -19,8 +19,7 @@ The **_motor boards_** were controlled over the CAN bus, then an IP link with a 
 
 As with all projects, we had delays, so in 2015 we weren't able to homologate at the SwissEurobot competition, although we managed to win a Jury award for best design.
 
-Last October, [@antoinealb](https://github.com/antoinealb/) and [I](https://github.com/syrianspock/), decided after a trip to ROSCon 2015 in Hamburg[^1] we want to experiment with CAN directly on a computer rather than leveraging all the tools and libraries provided by ROS and SocketCAN in order to build the small robot for Eurobot.
-Little did we know that were not symplifying much. (MR: what the frack is that sentence?!)
+Last October, [@antoinealb](https://github.com/antoinealb/) and [I](https://github.com/syrianspock/), decided after a trip to ROSCon 2015 in Hamburg[^1] we want to experiment with CAN directly on a computer and leverage all the tools and libraries provided by ROS and SocketCAN in order to build the small robot for Eurobot.
 It was dubbed **project Goldorak**, and the name stuck so the robot was named **Goldorak**[^2].
 
 This post goes through our journey, the limitations we hit when using [ROS](http://ros.org/) for Eurobot on a microcomputer (the [BeagleBone Black](https://beagleboard.org/black)) and the lessons learned from it.
@@ -115,7 +114,7 @@ Our system, however, is a bit more complex due to its distributed architecture.
 Indeed, the two odometers are wired and handled by two separate microcontrollers so there is no synchronisation between their samples.
 A solution to this problem is to predict the encoder value of the wheel with the oldest sample at the time of odometry computation.
 This asynchronous odometry was implemented last year, so it was only a matter of wrapping it in a node and subscribing to the right topics to get encoder values.
-Once the odometry is computed we stream the 3D pose (MR: what?) to the `/odom` topic which is a `nav_msgs/Odometry` type of message.
+The estimated robot pose is published to the `/odom` topic which is a `nav_msgs/Odometry` type of message.
 
 ```[nav_msgs/Odometry]
 std_msgs/Header header
@@ -262,7 +261,7 @@ To finish this long article, here is a list of things to remember:
 - There is a nice framework to write tests with ROS nodes but the feedback loop is too long to use effectively for Test Driver Development.
 - We didn't manage to cross-compile ROS packages to ARM which slowed down our development as we approached the contest and the changes were only testable on the real hardware.
 - We lacked thorough testing due to delays in manufacturing and assembly of the robot and very long feedback loops between two tests on the robot.
-- Having a computer on board your robot for Eurobot is nice for CPU hungry computation, but don't use a microcomputer such as the BeagleBone Black or the Raspberry Pi because it provides the worst of both worlds: it comes with an OS which means state (MR: what?), long boot time. And it's not as simple to use IO as it is on a microcontroller (you need to setup the device tree overlays and use sudo)
+- Having a computer on board your robot for Eurobot is nice for CPU hungry computation, but don't use a microcomputer such as the BeagleBone Black or the Raspberry Pi. These boards are nice for tinkering but they tend to have long boot times and slow CPUs. They can't be used as replacement for a more conventional computer in all applications. Also note that it's not as simple to use IO as it is on a microcontroller[^12].
 - Keep your stack as simple as your application requires
 - We are going to use a microcontroller board as master on our robots. That doesn't mean we won't use an onboard computer, just that it will be a slave and won't be a critical component of the robot.
 
@@ -278,3 +277,4 @@ To finish this long article, here is a list of things to remember:
 [^5]: The beacon system we used this year consisted of an optical obstacle detection based on an emitter and receiver on our robots and a reflector on the opponent's robots.
 [^10]: No goats were harmed in the making of this article.
 [^11]: [Where we stopped trying to crosscompile](https://github.com/cvra/goldorak/pull/6)
+[^12]: In order to use IOs on Linux, you need to setup the device tree overlays and use sudo. You can use sysfs to run without sudo, but that can't be applied to all peripherals.
