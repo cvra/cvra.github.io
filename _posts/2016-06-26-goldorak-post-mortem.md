@@ -17,10 +17,10 @@ They were connected through a CAN bus to the **_master board_**.
 The **_master board_** is an STM32F4 board from Olimex (Olimex E407) connected to CAN and to the computer via Ethernet.
 The **_motor boards_** were controlled over the CAN bus, then an IP link with a custom RPC protocol bridged the CAN bus with the computer.
 
-As with all projects, we had delays, so in 2015 we weren't able to homologate at the Swiss Eurobot competition, although we managed to win a Jury award for best design.
+As with all projects, we had delays, so in 2015 we weren't able to homologate at the SwissEurobot competition, although we managed to win a Jury award for best design.
 
-Last october, [@antoinealb](https://github.com/antoinealb/) and [I](https://github.com/syrianspock/), after a trip to ROSCon 2015 in Hamburg[^1], decided we want to explore with CAN directly on a computer then leveraging all the tools and libraries provided by ROS and SocketCAN to build the small robot for Eurobot.
-Little did we know that were not symplifying much.
+Last October, [@antoinealb](https://github.com/antoinealb/) and [I](https://github.com/syrianspock/), decided after a trip to ROSCon 2015 in Hamburg[^1] we want to experiment with CAN directly on a computer rather than leveraging all the tools and libraries provided by ROS and SocketCAN in order to build the small robot for Eurobot.
+Little did we know that were not symplifying much. (MR: what the frack is that sentence?!)
 It was dubbed **project Goldorak**, and the name stuck so the robot was named **Goldorak**[^2].
 
 This post goes through our journey, the limitations we hit when using [ROS](http://ros.org/) for Eurobot on a microcomputer (the [Beaglebone black](https://beagleboard.org/black)) and the lessons learned from it.
