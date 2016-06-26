@@ -10,12 +10,36 @@ Until two years ago, the robots we developed for Eurobot were centralized system
 An FPGA board powered the robot, reading sensors, controlling actuators and running all the control loops.
 An auxiliary computer provided access to higher level features such as computer vision, and it sometimes was used to run the strategy.
 
+
+<div class="row">
+<div class="large-5 columns">
+<p>
 However, due to an increasing number of actuators on the main robot: Debra (a robot we started developing in 2011 as a reusable platform with a differential base and two SCARA arms), we decided to shift to a distributed architecture.
-Thus, the FPGA was replaced by several **_motor boards_**[^0], a single **_master board_** and the embedded computer remained.
-The **_motor boards_** are little boards we designed in 2014-2015 that use a STM32F3 microcontroller to control a single motor in torque, velocity and position.
-They were connected through a CAN bus to the **_master board_**.
-The **_master board_** is an STM32F4 board from Olimex (Olimex E407) connected to CAN and to the computer via Ethernet.
-The **_motor boards_** were controlled over the CAN bus, then an IP link with a custom RPC protocol bridged the CAN bus with the computer.
+</p>
+<p>
+Thus, the FPGA was replaced by several <em><strong>motor boards</strong></em>, a single <em><strong>master board</strong></em> and the embedded computer remained.
+</p>
+<p>
+<ul>
+<li>
+The <em><strong>motor boards</strong></em> are little boards we designed in 2014-2015 that use a STM32F3 microcontroller to control a single motor in torque, velocity and position.
+They were connected through a CAN bus to the <em><strong>master board</strong></em>.
+</li>
+<li>
+The <em><strong>master board</strong></em> is an STM32F4 board from Olimex (Olimex E407) connected to CAN and to the computer via Ethernet
+</li>
+</ul>
+</p>
+
+</div>
+
+<div class="large-7 columns">
+<p><img src="/images/posts/goldorak-postmortem/Architecture.png" alt="Robot architecture"></p>
+</div>
+
+</div>
+
+The **_motor boards_**[^0] were controlled over the CAN bus, then an IP link with a custom RPC protocol bridged the CAN bus with the computer.
 
 As with all projects, we had delays, so in 2015 we weren't able to homologate at the SwissEurobot competition, although we managed to win a Jury award for best design.
 
