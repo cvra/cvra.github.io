@@ -3,7 +3,7 @@ layout: post
 title: Goldorak 2016 post-mortem
 author: Salah
 categories: Eurobot, Embedded Linux, ROS
-tags: ['beaglebone black', 'ubuntu', 'linux', 'ROS', 'embedded', 'robotics', 'eurobot']
+tags: ['BeagleBone Black', 'ubuntu', 'linux', 'ROS', 'embedded', 'robotics', 'eurobot']
 ---
 
 Until two years ago, the robots we developed for Eurobot were centralized systems.
@@ -23,7 +23,7 @@ Last October, [@antoinealb](https://github.com/antoinealb/) and [I](https://gith
 Little did we know that were not symplifying much. (MR: what the frack is that sentence?!)
 It was dubbed **project Goldorak**, and the name stuck so the robot was named **Goldorak**[^2].
 
-This post goes through our journey, the limitations we hit when using [ROS](http://ros.org/) for Eurobot on a microcomputer (the [Beaglebone black](https://beagleboard.org/black)) and the lessons learned from it.
+This post goes through our journey, the limitations we hit when using [ROS](http://ros.org/) for Eurobot on a microcomputer (the [BeagleBone Black](https://beagleboard.org/black)) and the lessons learned from it.
 
 
 ## **ROS meets UAVCAN**
@@ -31,9 +31,9 @@ This post goes through our journey, the limitations we hit when using [ROS](http
 ### **CAN on Linux**
 
 The choice of an embedded computer was pretty straightforward.
-I had previously worked with the Beaglebone black and grew acquainted with it.
-It provided CAN and Ethernet off the shelf.
-So we chose to use the Beaglebone black as our embedded computer.
+I had previously worked with the BeagleBone Black and grew acquainted with it.
+It provides CAN and Ethernet off-the-shelf.
+So we chose to use the BeagleBone Black as our embedded computer.
 
 At first, we did the setup by hand, but later on we automated it using SaltStack[^3].
 Installing and setting up SocketCAN was quite easy.[^4]
@@ -41,12 +41,12 @@ Installing and setting up SocketCAN was quite easy.[^4]
 
 ### **Bridging UAVCAN with ROS**
 
-In order to use the motor boards we designed the previous year, our Beaglebone black had to speak [UAVCAN](http://uavcan.org/).
-We needed to send PID parameters and setpoints, but also received feedback if needed.
+In order to use the motor boards we designed the previous year, our BeagleBone Black had to speak [UAVCAN](http://uavcan.org/).
+We needed to send PID parameters and setpoints, and to also receive feedback if needed.
 
 First, a ROS-UAVCAN bridge was the first node to be written.
 We wrote it in C++ since UAVCAN's Python implementation was not as mature back in October.
-The process was quite straightforward but quite boring and repetitive: for each message structure supported by the motor board, there are a ROS publisher and a UAVCAN subscriber or vice versa.
+The process was quite straightforward but quite boring and repetitive: for each message structure supported by the motor board, there are a ROS publisher and a UAVCAN subscriber, or vice versa.
 
 Each motor board had a name and node ID to identify it.
 The CAN messages were relayed onto ROS topics divided between setpoint and feedback and organized by namespace: each node name defined an associated namespace.
@@ -105,17 +105,17 @@ The equations are also straightforward:
 velocity_right = (velocity_forward + (track / 2.f) * velocity_yaw) / radius_right;
 velocity_left = (velocity_forward - (track / 2.f) * velocity_yaw) / radius_left;
 ```
-Where the track is the distance between the two driving wheels.
+Where track is the distance between the two differential driving wheels.
 
 Moving the robot is nice, but the robot also needs to know where it is.
-For that we use incremental encoders placed on external wheels (i.e. not the motor driving wheels) that we call odometers.
+For that we use incremental encoders placed on additional external wheels that we call odometers (i.e. not the motor driving wheels).
 Odometry equations are simple for a differential base.
 
 Our system, however, is a bit more complex due to its distributed architecture.
 Indeed, the two odometers are wired and handled by two separate microcontrollers so there is no synchronisation between their samples.
 A solution to this problem is to predict the encoder value of the wheel with the oldest sample at the time of odometry computation.
 This asynchronous odometry was implemented last year, so it was only a matter of wrapping it in a node and subscribing to the right topics to get encoder values.
-Once the odometry is computed we stream the 3D pose to the `/odom` topic which is a `nav_msgs/Odometry` type of message.
+Once the odometry is computed we stream the 3D pose (MR: what?) to the `/odom` topic which is a `nav_msgs/Odometry` type of message.
 
 ```[nav_msgs/Odometry]
 std_msgs/Header header
@@ -184,20 +184,20 @@ The result was pretty cool.
 <iframe width="640" height="360" src="https://www.youtube.com/embed/8rnjWCc1nB8" frameborder="0" allowfullscreen></iframe>
 </div>
 
-But as soon as it had to run on the Beaglebone black, we would hit the computational limits of the platform, so we had to tune the parameters sub-optimally to run on it.
+But as soon as it had to run on the BeagleBone Black, we would hit the computational limits of the platform, so we had to tune the parameters sub-optimally to run on it.
 We switched to trajectory rollout for local planning and increased the goal tolerances while decreasing update rates of costmaps and control.
 
 The result was OK, although not sufficient for the tasks at hand.
 We only realized these limitations a few weeks before the contest when we started testing the fishing module for the competition.
 By then, it was too late to change much in our approach to the problem.
-Retrospectively, a possible solution would have been to use the spare Intel NUC of Debra and connect it to the Beaglebone black, then have it run all nodes except the UAVCAN bridge which would run on the Beaglebone black.
+Retrospectively, a possible solution would have been to use the spare Intel NUC of Debra and connect it to the BeagleBone Black, then have it run all nodes except the UAVCAN bridge which would run on the BeagleBone Black.
 
 
 ## **Computers are all fun and games until they are not**
 
-### **Saving CPU resources on the Beaglebone black**
+### **Saving CPU resources on the BeagleBone Black**
 
-Now that our navigation was consuming up to 70% of CPU time on the Beaglebone black, we needed to think carefully about how we used our resources.
+Now that our navigation was consuming up to 70% of CPU time on the BeagleBone Black, we needed to think carefully about how we used our resources.
 We switched time critical nodes into nodelets to save some CPU time.
 Nodelets are a way of writing a node such that it can benefit from zero-copy publish/subscribe and free us from some overhead of processes while maintaining the introspective capabilities of ROS.
 One major setback was that we weren't able to wrap the UAVCAN bridge into a single thread or a nodelet.
@@ -205,13 +205,13 @@ One major setback was that we weren't able to wrap the UAVCAN bridge into a sing
 We also played with **nice**, a Unix tool that allows you to set the priority of a process.
 This way we were able to give priority to control nodes.
 
-### **Beaglebone black's limitations as ROS platform**
+### **BeagleBone Black's limitations as ROS platform**
 
 Along the journey, as we had more and more nodes nodes to build for our robot to run, the build time increased from a few seconds to ~20 seconds.
-This effect was more dramatic on the Beaglebone black, we went from a few tens of seconds to a full record of 20 minutes of painful compilation time.
+This effect was more dramatic on the BeagleBone Black, we went from a few tens of seconds to a full record of 20 minutes of painful compilation time.
 It felt like writing software in the 1960 where you had to wait until next day after the code you wrote was punched into cards and ran by a computer operator.
 
-A logical reaction of ours was to try crosscompiling for the Beaglebone black on our machines.
+A logical reaction of ours was to try crosscompiling for the BeagleBone Black on our machines.
 We crosscompile everyday for ARM cortex-M microcontrollers that run our motor boards and such.
 So crosscompiling must be easy, right ?
 Well turns out it's not.
@@ -262,7 +262,7 @@ To finish this long article, here is a list of things to remember:
 - There is a nice framework to write tests with ROS nodes but the feedback loop is too long to use effectively for Test Driver Development.
 - We didn't manage to cross-compiling ROS packages to ARM which slowed our development as we approached the contest and the changes were only testable on the real hardware.
 - We lacked thorough testing due to delays in manufacturing and assembly of the robot and very long feedback loops between two tests on the robot.
-- Having a computer on board your robot for Eurobot is nice for CPU hungry computation, but don't use a microcomputer such as the Beaglebone black or the Raspberry Pi because it provides the worst of both worlds: it comes with an OS which means state, long boot time. And it's not as simple to use IO as it is on a microcontroller (you need to setup the device tree overlays and use sudo)
+- Having a computer on board your robot for Eurobot is nice for CPU hungry computation, but don't use a microcomputer such as the BeagleBone Black or the Raspberry Pi because it provides the worst of both worlds: it comes with an OS which means state, long boot time. And it's not as simple to use IO as it is on a microcontroller (you need to setup the device tree overlays and use sudo)
 - Keep your stack as simple as your application requires
 - We are going to use a microcontroller board as master on our robots. That doesn't mean we won't use an onboard computer, just that it won't be a critical component in the robot.
 
@@ -273,8 +273,8 @@ To finish this long article, here is a list of things to remember:
 [^0]: [DC Motor Controller boards with CAN Interface](https://github.com/cvra/motor-control-board)
 [^1]: [The just got back from conference effect](http://www.commitstrip.com/en/2016/04/26/the-just-got-back-from-a-conference-effect/)
 [^2]: [Project Goldorak, CVRA's small robot for Eurobot 2016](https://github.com/cvra/goldorak)
-[^3]: [Setup of the Beaglebone black used on Goldorak, our small robot](https://github.com/cvra/goldorak-operations)
-[^4]: [My Beaglebone black setup for embedded and robotics development](http://syrianspock.github.io/embedded-linux/2015/09/13/my-beaglebone-black-setup-for-embedded-and-robotics-development.html)
+[^3]: [Setup of the BeagleBone Black used on Goldorak, our small robot](https://github.com/cvra/goldorak-operations)
+[^4]: [My BeagleBone Black setup for embedded and robotics development](http://syrianspock.github.io/embedded-linux/2015/09/13/my-beaglebone-black-setup-for-embedded-and-robotics-development.html)
 [^5]: The beacon system we used this year consisted of an optical obstacle detection based on an emitter and receiver on our robots and a reflector on the opponent's robots.
 [^10]: No goats were harmed in the making of this article
 [^11]: [Where we stopped trying to crosscompile](https://github.com/cvra/goldorak/pull/6)
