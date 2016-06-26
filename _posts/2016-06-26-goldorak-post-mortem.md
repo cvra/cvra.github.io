@@ -3,7 +3,7 @@ layout: post
 title: Goldorak 2016 post-mortem
 author: Salah
 categories: Eurobot, Embedded Linux, ROS
-tags: ['BeagleBone Black', 'ubuntu', 'linux', 'ROS', 'embedded', 'robotics', 'eurobot']
+tags: ['beaglebone black', 'ubuntu', 'linux', 'ROS', 'embedded', 'robotics', 'eurobot']
 ---
 
 Until two years ago, the robots we developed for Eurobot were centralized systems.
@@ -207,15 +207,15 @@ This way we were able to give priority to control nodes.
 
 ### **BeagleBone Black's limitations as ROS platform**
 
-Along the journey, as we had more and more nodes nodes to build for our robot to run, the build time increased from a few seconds to ~20 seconds.
+Along the journey, as we had more and more nodes to build for our robot to run, the build time increased from a few seconds to ~20 seconds.
 This effect was more dramatic on the BeagleBone Black, we went from a few tens of seconds to a full record of 20 minutes of painful compilation time.
 It felt like writing software in the 1960 where you had to wait until next day after the code you wrote was punched into cards and ran by a computer operator.
 
 A logical reaction of ours was to try crosscompiling for the BeagleBone Black on our machines.
 We crosscompile everyday for ARM cortex-M microcontrollers that run our motor boards and such.
-So crosscompiling must be easy, right ?
-Well turns out it's not.
-After a few minutes of Google search, you realize that noone ever crosscompiles ROS nodes and you wonder why.
+So crosscompiling must be easy, right?
+Well... turns out it's not.
+After a few minutes of Google search, you realize that no one ever crosscompiles ROS nodes and you wonder why.
 So you try to make it crosscompile on your own.
 You sacrifice a few goats[^10] and you learn more than you would like to know about CMake and you managed to compile but then crosscompilation crushes you because you will NEVER link against ROS libraries.
 You heretic, how dare you think about crosscompilation[^11].
@@ -225,7 +225,7 @@ So if you were thinking about crosscompiling your ROS nodes, then think about so
 
 ## **2016 Competition summary**
 
-The swiss contest took place last May.
+The swiss contest took place on May 2016.
 With Goldorak, we intended to perform several actions:
 
 - Shell collection using grippers (2 points per shell)
@@ -260,11 +260,11 @@ To finish this long article, here is a list of things to remember:
 - ROS visualisation tools are very useful but tend to crash sometimes which is kind of frustrating (but it doesn't matter since processes are decoupled).
 - Smach is a cool library for writing a state machine for your strategy but its viewer crashes all the time.
 - There is a nice framework to write tests with ROS nodes but the feedback loop is too long to use effectively for Test Driver Development.
-- We didn't manage to cross-compiling ROS packages to ARM which slowed our development as we approached the contest and the changes were only testable on the real hardware.
+- We didn't manage to cross-compile ROS packages to ARM which slowed down our development as we approached the contest and the changes were only testable on the real hardware.
 - We lacked thorough testing due to delays in manufacturing and assembly of the robot and very long feedback loops between two tests on the robot.
-- Having a computer on board your robot for Eurobot is nice for CPU hungry computation, but don't use a microcomputer such as the BeagleBone Black or the Raspberry Pi because it provides the worst of both worlds: it comes with an OS which means state, long boot time. And it's not as simple to use IO as it is on a microcontroller (you need to setup the device tree overlays and use sudo)
+- Having a computer on board your robot for Eurobot is nice for CPU hungry computation, but don't use a microcomputer such as the BeagleBone Black or the Raspberry Pi because it provides the worst of both worlds: it comes with an OS which means state (MR: what?), long boot time. And it's not as simple to use IO as it is on a microcontroller (you need to setup the device tree overlays and use sudo)
 - Keep your stack as simple as your application requires
-- We are going to use a microcontroller board as master on our robots. That doesn't mean we won't use an onboard computer, just that it won't be a critical component in the robot.
+- We are going to use a microcontroller board as master on our robots. That doesn't mean we won't use an onboard computer, just that it will be a slave and won't be a critical component of the robot.
 
 
 
@@ -276,5 +276,5 @@ To finish this long article, here is a list of things to remember:
 [^3]: [Setup of the BeagleBone Black used on Goldorak, our small robot](https://github.com/cvra/goldorak-operations)
 [^4]: [My BeagleBone Black setup for embedded and robotics development](http://syrianspock.github.io/embedded-linux/2015/09/13/my-beaglebone-black-setup-for-embedded-and-robotics-development.html)
 [^5]: The beacon system we used this year consisted of an optical obstacle detection based on an emitter and receiver on our robots and a reflector on the opponent's robots.
-[^10]: No goats were harmed in the making of this article
+[^10]: No goats were harmed in the making of this article.
 [^11]: [Where we stopped trying to crosscompile](https://github.com/cvra/goldorak/pull/6)
