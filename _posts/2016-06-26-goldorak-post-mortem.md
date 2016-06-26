@@ -280,6 +280,7 @@ To finish this long article, here is a list of things to remember:
 
 - ROS communication stack is stable and very nice to have, it makes node debugging easier and feature implementation faster
 - ROS navigation stack is fun and very useful for large scale robots navigating among humans but for Eurobot it's overkill and requires a very powerful onboard computer to run properly.
+The navigation stack is well suited for probabilistic navigation and avoiding unpredictible obstacles, however Eurobot requires more precise and repeatable positioning.
 - ROS visualisation tools are very useful but tend to crash sometimes which is kind of frustrating (but it doesn't matter since processes are decoupled).
 - Smach is a cool library for writing a state machine for your strategy but its viewer crashes all the time.
 - There is a nice framework to write tests with ROS nodes but the feedback loop is too long to use effectively for Test Driver Development.
