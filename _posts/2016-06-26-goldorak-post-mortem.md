@@ -6,8 +6,8 @@ categories: Eurobot, Embedded Linux, ROS
 tags: ['beaglebone black', 'ubuntu', 'linux', 'ROS', 'embedded', 'robotics', 'eurobot']
 ---
 
-Until two years ago, the robots we developed for Eurobot were centralized systems.
-An FPGA board powered the robot, reading sensors, controlling actuators and running all the control loops.
+Until two years ago, the robots we developed for Eurobot, were centralized systems.
+An FPGA board powered the robot: reading sensors, controlling actuators, and running all the control loops.
 An auxiliary computer provided access to higher level features such as computer vision, and it sometimes was used to run the strategy.
 
 
@@ -17,16 +17,16 @@ An auxiliary computer provided access to higher level features such as computer 
 However, due to an increasing number of actuators on the main robot: Debra (a robot we started developing in 2011 as a reusable platform with a differential base and two SCARA arms), we decided to shift to a distributed architecture.
 </p>
 <p>
-Thus, the FPGA was replaced by several <em><strong>motor boards</strong></em>, a single <em><strong>master board</strong></em> and the embedded computer remained.
+Thus, the FPGA was replaced by several <em><strong>motor boards</strong></em>, a single <em><strong>master board</strong></em>, and the embedded computer remained.
 </p>
 <p>
 <ul>
 <li>
-The <em><strong>motor boards</strong></em> are little boards we designed in 2014-2015 that use a STM32F3 microcontroller to control a single motor in torque, velocity and position.
+The <em><strong>motor boards</strong></em> are little boards we designed in 2014-2015 that use a STM32F3 microcontroller to control a single motor in torque, velocity, and position.
 They were connected through a CAN bus to the <em><strong>master board</strong></em>.
 </li>
 <li>
-The <em><strong>master board</strong></em> is an STM32F4 board from Olimex (Olimex E407) connected to CAN and to the computer via Ethernet
+The <em><strong>master board</strong></em> is an STM32F4 board from Olimex (Olimex E407) connected to CAN, and to the computer via Ethernet.
 </li>
 </ul>
 </p>
@@ -43,10 +43,10 @@ The **_motor boards_**[^0] were controlled over the CAN bus, then an IP link wit
 
 As with all projects, we had delays, so in 2015 we weren't able to homologate at the SwissEurobot competition, although we managed to win a Jury award for best design.
 
-Last October, [@antoinealb](https://github.com/antoinealb/) and [I](https://github.com/syrianspock/), decided after a trip to ROSCon 2015 in Hamburg[^1] we want to experiment with CAN directly on a computer and leverage all the tools and libraries provided by ROS and SocketCAN in order to build the small robot for Eurobot.
-It was dubbed **project Goldorak**, and the name stuck so the robot was named **Goldorak**[^2].
+Last October, [@antoinealb](https://github.com/antoinealb/) and [I](https://github.com/syrianspock/), decided after a trip to ROSCon 2015 in Hamburg[^1], we want to experiment with CAN directly on a computer, and leverage all the tools and libraries provided by ROS and SocketCAN in order to build the small robot for Eurobot.
+It was dubbed **project Goldorak**, and the name stuck, so the robot was named **Goldorak**[^2].
 
-This post goes through our journey, the limitations we hit when using [ROS](http://ros.org/) for Eurobot on a microcomputer (the [BeagleBone Black](https://beagleboard.org/black)) and the lessons learned from it.
+This post goes through our journey, the limitations we hit when using [ROS](http://ros.org/) for Eurobot on a microcomputer (the [BeagleBone Black](https://beagleboard.org/black)), and the lessons learned from it.
 
 
 ## **ROS meets UAVCAN**
@@ -59,7 +59,7 @@ It provides CAN and Ethernet off-the-shelf.
 So we chose to use the BeagleBone Black as our embedded computer.
 
 At first, we did the setup by hand, but later on we automated it using SaltStack[^3].
-Installing and setting up SocketCAN was quite easy.[^4]
+Installing and setting up SocketCAN was quite easy[^4].
 
 
 ### **Bridging UAVCAN with ROS**
@@ -69,10 +69,10 @@ We needed to send PID parameters and setpoints, and to also receive feedback if 
 
 First, a ROS-UAVCAN bridge was the first node to be written.
 We wrote it in C++ since UAVCAN's Python implementation was not as mature back in October.
-The process was quite straightforward but quite boring and repetitive: for each message structure supported by the motor board, there are a ROS publisher and a UAVCAN subscriber, or vice versa.
+The process was quite straightforward, but boring and repetitive: for each message structure supported by the motor board, there are a ROS publisher and a UAVCAN subscriber, or vice versa.
 
 Each motor board had a name and node ID to identify it.
-The CAN messages were relayed onto ROS topics divided between setpoint and feedback and organized by namespace: each node name defined an associated namespace.
+The CAN messages were relayed onto ROS topics divided between setpoint and feedback, and organized by namespace: each node name defined an associated namespace.
 Take the `right_wheel` node for example, the associated list of topics looks like this.
 
 ```
@@ -98,7 +98,7 @@ Using RQT for plotting and using dynamic reconfigure to send PID parameters to t
 
   - Setpoints and measured outputs are plotted in top left (PyQtGraph plot)
   - PID parameters are tuned through the widget in top right (dynamic reconfigure)
-  - Topics are monitored and selected for plotting from the bottom widget (topic monitor)
+  - Topics are monitored and selected for plotting, from the bottom widget (topic monitor)
 
 ![PID tuning interface with Rviz and Dynamic reconfigure](/images/posts/goldorak-postmortem/PID_tuning.jpg)
 
@@ -121,7 +121,7 @@ geometry_msgs/Vector3 angular
   float64 z
 ```
 
-For a robot with differential base this is quite easy as you can only apply a combination of linear x and angular z (yaw) velocity.
+For a robot with differential base, this is quite easy, since you can only apply a combination of linear x and angular z (yaw) velocity.
 The equations are also straightforward:
 
 ```math
@@ -131,7 +131,7 @@ velocity_left = (velocity_forward - (track / 2.f) * velocity_yaw) / radius_left;
 Where track is the distance between the two differential driving wheels.
 
 Moving the robot is nice, but the robot also needs to know where it is.
-For that we use incremental encoders placed on additional external wheels that we call odometers (i.e. not the motor driving wheels).
+For that, we use incremental encoders placed on additional external wheels, that we call odometers (i.e. not the motor driving wheels).
 Odometry equations are simple for a differential base.
 
 Our system, however, is a bit more complex due to its distributed architecture.
@@ -189,9 +189,8 @@ Time to make it navigate!
 The [ROS navigation stack](http://wiki.ros.org/navigation) is a set of motion planners based on a discrete costmap approach.
 It consists of a global planner and a local planner.
 
-The [global planner](http://wiki.ros.org/global_planner) solves the problem of going from point A to point B in spatial coordinates (x, y, z) given a discrete map with obstacles (occupancy grid). This problem is typically solved using A*, Djikstra and/or potential field algorithms.
-
-The local planner will locally compute a feasible trajectory on the global plan (result of the global planner) taking into account desired arrival orientation and kinematic constraints (holonomic or not, fully actuated or underactuated).
+- The [global planner](http://wiki.ros.org/global_planner) solves the problem of going from point A to point B in spatial coordinates (x, y, z) given a discrete map with obstacles (occupancy grid). This problem is typically solved using A*, Djikstra and/or potential field algorithms.
+- The local planner will locally compute a feasible trajectory on the global plan (result of the global planner) taking into account desired arrival orientation and kinematic constraints (holonomic or not, fully actuated or underactuated).
 Popular implementations of local planners include the __simple__ [trajectory rollout](http://wiki.ros.org/base_local_planner), the [Dynamic Window Approach](http://wiki.ros.org/dwa_local_planner), the [Elastic Band Approach](http://wiki.ros.org/eband_local_planner) to cite a few.
 
 The navigation stack also supports inputs from a laser scanner, but we didn't use it on Goldorak since we only had one that was already used on Debra.
@@ -208,7 +207,7 @@ The result was pretty cool.
 </div>
 
 But as soon as it had to run on the BeagleBone Black, we would hit the computational limits of the platform, so we had to tune the parameters sub-optimally to run on it.
-We switched to trajectory rollout for local planning and increased the goal tolerances while decreasing update rates of costmaps and control.
+We switched to trajectory rollout for local planning, and increased the goal tolerances while decreasing update rates of costmaps and control.
 
 The result was OK, although not sufficient for the tasks at hand.
 We only realized these limitations a few weeks before the contest when we started testing the fishing module for the competition.
@@ -238,9 +237,9 @@ A logical reaction of ours was to try crosscompiling for the BeagleBone Black on
 We crosscompile everyday for ARM cortex-M microcontrollers that run our motor boards and such.
 So crosscompiling must be easy, right?
 Well... turns out it's not.
-After a few minutes of Google search, you realize that no one ever crosscompiles ROS nodes and you wonder why.
+After a few minutes of Google search, you realize that no one ever crosscompiles ROS nodes, and you wonder why.
 So you try to make it crosscompile on your own.
-You sacrifice a few goats[^10] and you learn more than you would like to know about CMake and you managed to compile but then crosscompilation crushes you because you will NEVER link against ROS libraries.
+You sacrifice a few goats[^10], and you learn more than you would like to know about CMake, and you managed to compile, but then crosscompilation crushes you because you will NEVER link against ROS libraries.
 You heretic, how dare you think about crosscompilation[^11].
 
 So if you were thinking about crosscompiling your ROS nodes, then think about something else to do with your life, maybe become a farmer and grow some corn: agriculture makes more sense than computer science, at least it's governed by laws of physics.
@@ -253,7 +252,7 @@ With Goldorak, we intended to perform several actions:
 
 - Shell collection using grippers (2 points per shell)
 - Door closing (10 points per door), this task was left to the bigger robot, Debra
-- Fish collection in the water (10 points per fish in net and 5 if in robot) using a dedicated module (2-axis cartesian with impeller and magnets)
+- Fish collection in the water (10 points per fish in net and 5 if in the robot) using a dedicated module (2-axis cartesian with impeller and magnets)
 - Beach umbrella deployment using a pneumatic tank (20 points) on which Mathieu wrote a [great article](http://www.cvra.ch/blog/2016/airtank)
 
 With all the software, mechanical and integration hassles encountered, we only managed to perform the last two actions.
@@ -266,7 +265,7 @@ The fishing sequence had high requirements on the position of the robot relative
 The left side of the robot had to be less than 2cm away from the border to allow the impeller to deploy correctly in water and attract the fish to be caught using magnets.
 
 In the end, fishing sequence had to be hacked around due to the poor performance of the navigation on our CPU-bound platform.
-We managed to collect between 0 and 2 fish per match for a total of 9 fish in 7 matches and successfully deposited 7 fish in the net (1.14 fish per match in average if counting fish in robot as 0.5 fish).
+We managed to collect between 0 and 2 fish per match for a total of 9 fish in 7 matches, and we successfully deposited 7 fish in the net (1.14 fish per match in average if counting fish in robot as 0.5 fish).
 
 An unexpected problem was getting stuck by a shell and thus getting lost.
 Another common problem was the navigation oscillating around its goal at the 2nd or 3rd fishing sequence, after which the robot would freeze until the end.
@@ -278,7 +277,7 @@ In average, the small robot scored 31.4 points per match, well below the maximum
 
 To finish this long article, here is a list of things to remember:
 
-- ROS communication stack is stable and very nice to have, it makes node debugging easier and feature implementation faster
+- ROS communication stack is stable and very nice to have, it makes node debugging easier and feature implementation faster.
 - ROS navigation stack is fun and very useful for large scale robots navigating among humans but for Eurobot it's overkill and requires a very powerful onboard computer to run properly.
 The navigation stack is well suited for probabilistic navigation and avoiding unpredictible obstacles, however Eurobot requires more precise and repeatable positioning.
 - ROS visualisation tools are very useful but tend to crash sometimes which is kind of frustrating (but it doesn't matter since processes are decoupled).
@@ -287,19 +286,19 @@ The navigation stack is well suited for probabilistic navigation and avoiding un
 - We didn't manage to cross-compile ROS packages to ARM which slowed down our development as we approached the contest and the changes were only testable on the real hardware.
 - We lacked thorough testing due to delays in manufacturing and assembly of the robot and very long feedback loops between two tests on the robot.
 - Having a computer on board your robot for Eurobot is nice for CPU hungry computation, but don't use a microcomputer such as the BeagleBone Black or the Raspberry Pi. These boards are nice for tinkering but they tend to have long boot times and slow CPUs. They can't be used as replacement for a more conventional computer in all applications. Also note that it's not as simple to use IO as it is on a microcontroller[^12].
-- Keep your stack as simple as your application requires
+- Keep your stack as simple as your application requires.
 - We are going to use a microcontroller board as master on our robots. That doesn't mean we won't use an onboard computer, just that it will be a slave and won't be a critical component of the robot.
 
 
 
 ## **Footnotes and links**
 
-[^0]: [DC Motor Controller boards with CAN Interface](https://github.com/cvra/motor-control-board)
-[^1]: [The just got back from conference effect](http://www.commitstrip.com/en/2016/04/26/the-just-got-back-from-a-conference-effect/)
-[^2]: [Project Goldorak, CVRA's small robot for Eurobot 2016](https://github.com/cvra/goldorak)
-[^3]: [Setup of the BeagleBone Black used on Goldorak, our small robot](https://github.com/cvra/goldorak-operations)
-[^4]: [My BeagleBone Black setup for embedded and robotics development](http://syrianspock.github.io/embedded-linux/2015/09/13/my-beaglebone-black-setup-for-embedded-and-robotics-development.html)
+[^0]: [DC Motor Controller boards with CAN Interface](https://github.com/cvra/motor-control-board).
+[^1]: [The just got back from conference effect](http://www.commitstrip.com/en/2016/04/26/the-just-got-back-from-a-conference-effect/).
+[^2]: [Project Goldorak, CVRA's small robot for Eurobot 2016](https://github.com/cvra/goldorak).
+[^3]: [Setup of the BeagleBone Black used on Goldorak, our small robot](https://github.com/cvra/goldorak-operations).
+[^4]: [My BeagleBone Black setup for embedded and robotics development](http://syrianspock.github.io/embedded-linux/2015/09/13/my-beaglebone-black-setup-for-embedded-and-robotics-development.html).
 [^5]: The beacon system we used this year consisted of an optical obstacle detection based on an emitter and receiver on our robots and a reflector on the opponent's robots.
 [^10]: No goats were harmed in the making of this article.
-[^11]: [Where we stopped trying to crosscompile](https://github.com/cvra/goldorak/pull/6)
+[^11]: [Where we stopped trying to crosscompile](https://github.com/cvra/goldorak/pull/6).
 [^12]: In order to use IOs on Linux, you need to setup the device tree overlays and use sudo. You can use sysfs to run without sudo, but that can't be applied to all peripherals.
