@@ -13,6 +13,8 @@ Our members come from different backgrounds, thus bringing skills and knowledge 
 This allows us to build relatively complex robots such as Debra, our main competing robot since 2011 featuring two articulated arms.
 </p>
 
+You can download the articles of the club (in French) <a href="../ressources/statuts.pdf">here</a>.
+
 <h3>Open source</h3>
 Our club is a strong supporter of open source and we try to make our projects available under a free license (MIT or Creative Commons):
 
