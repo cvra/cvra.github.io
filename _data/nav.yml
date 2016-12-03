@@ -7,6 +7,9 @@
 - title: "Robots"
   url: "/coupe"
   subcategories:
+    - subtitle: "2016"
+      subhref: "/coupe/2016.html"
+
     - subtitle: "2015"
       subhref: "/coupe/2015.html"
 
