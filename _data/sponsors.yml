@@ -102,4 +102,12 @@
   what: IAR Laser-Mécanique offered us to laser cut all the metal sheets of the robot.
   url: http://iar.ch
 
+- name: ASSAG
+  logo: assag.png
+  what: ASSAG has provided us with Cylkro face gear technology gears used in Debra's arms.
+  url: http://www.assag.ch/En/index.php
 
+- name: Phoenix Contact
+  logo: phoenix_contact.png
+  what: Phoenix Contact sponsored us power connectors we use on our electronic boards.
+  url: https://www.phoenixcontact.com/
