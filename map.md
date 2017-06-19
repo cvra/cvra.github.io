@@ -8,7 +8,7 @@ If you want to reach us, please send an email (in French or English) to [info@cv
 
 # Access to the club
 Our workshop is located in the "collège du Léman", in Renens, Switzerland.
-If you want to visit us, our meetings are held on Wednesdays.
+If you want to visit us, our meetings are held on Thursdays.
 Please send an email before to notify us.
 
 <div class="ytvideo">
