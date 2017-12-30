@@ -58,6 +58,9 @@
     - subtitle: "CAN Motor Board"
       subhref: "/technologies/motor_board.html"
 
+    - subtitle: "CAN IO Board"
+      subhref: "/technologies/io_board.html"
+
 - title: "Pictures"
   href: "/pictures.html"
 
