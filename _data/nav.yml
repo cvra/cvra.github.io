@@ -52,6 +52,18 @@
     - subtitle: "2001"
       subhref: "/coupe/2001.html"
 
+- title: "Technologies"
+  url: "/technologies"
+  subcategories:
+    - subtitle: "CAN Bootloader"
+      subhref: "/technologies/bootloader.html"
+
+    - subtitle: "CAN Motor Board"
+      subhref: "/technologies/motor_board.html"
+
+    - subtitle: "CAN IO Board"
+      subhref: "/technologies/io_board.html"
+
 - title: "Pictures"
   href: "/pictures.html"
 
