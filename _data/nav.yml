@@ -55,6 +55,9 @@
 - title: "Technologies"
   url: "/technologies"
   subcategories:
+    - subtitle: "CAN Bootloader"
+      subhref: "/technologies/bootloader.html"
+
     - subtitle: "CAN Motor Board"
       subhref: "/technologies/motor_board.html"
 
