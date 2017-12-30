@@ -1,11 +1,36 @@
 ---
 layout: page
-title: CAN motor board
+title: CAN Motor Board
 ---
 
-The CAN motor board is a 31x16mm board we made to control a single DC motor over CAN bus.
-This is a core board we use in all our robots since 2015.
-We use it to control DC motors, motor pumps, and RC servos over CAN.
+<div class="row">
+<div class="large-6 columns">
+    <p>
+    The CAN motor board is a 31x16mm board we made to control a single DC motor over CAN bus.
+    This is a core board we use in all our robots since 2015.
+    We use it to control DC motors, motor pumps, and RC servos over CAN.
+    </p>
+    <h1>Contents</h1>
+    <p>
+        <ul>
+            <li><a href="motor_board.html#features">Features</a></li>
+            <li><a href="motor_board.html#hardware">Hardware</a></li>
+            <li><a href="motor_board.html#software">Application software</a></li>
+            <li><a href="motor_board.html#uavcan">UAVCAN messages</a></li>
+            <li>Quick links:
+                <a href="https://github.com/cvra/motor-control-board">Hardware</a> |
+                <a href="https://github.com/cvra/robot-software/tree/master/motor-control-firmware">Software</a> |
+                <a href="https://github.com/cvra/can-bootloader">Bootloader</a>
+            </li>
+        </ul>
+    </p>
+</div>
+<div class="large-6 columns">
+    <p><img src="/images/technologies/all-motor-boards.jpg" alt="CAN motor boards" /></p>
+</div>
+</div>
+
+<a name="features"></a>
 
 # Features
 
@@ -21,6 +46,8 @@ The CAN motor board is a small board with a dedicated MCU that has the following
  - Digital input for indexing, allows us to determine a reference location on a given axis that can be used for absolute positioning
  - Runs on 3 or 4 cell LiPo batteries
  - SWD connector for flashing and debugging, with UART exposed on the same connector
+
+<a name="hardware"></a>
 
 # Hardware
 
@@ -46,11 +73,7 @@ The CAN motor board is a small board with a dedicated MCU that has the following
 </div>
 </div>
 
-# Bootloader software
-
-To make development easier on CAN motor boards, we developed a general purpose CAN bootloader, that leverages libopencm3, also [available on Github](https://github.com/cvra/can-bootloader).
-This bootloader allows us to identify boards (they have a basic config stored in their flash alongside the bootloader), and to flash boards over CAN.
-Furthermore, firmware flashing is done in parallel if several boards are flashed with the same firmware.
+<a name="software"></a>
 
 # Application software
 
@@ -63,9 +86,11 @@ The control software runs three cascaded PID loops for torque, velocity, and pos
 Parameters can be read and set over UAVCAN.
 We also implemented a [GUI interface for PID tuning](https://github.com/cvra/robot-software/tree/master/tools/pid-tuner).
 
+<a name="uavcan"></a>
+
 # UAVCAN messages
 
-Each motor board has a unique human-readable name (e.g. right-wheel) that we can use to address it over UAVCAN (by maintaining a key-value pair associating UAVCAN IDs with board names).
+Each motor board has a unique human-readable name (e.g. right-wheel) that we can use to address it over UAVCAN by maintaining a key-value pair associating UAVCAN IDs with board names, just like DNS does for matching internet URLs with IP adresses.
 Communication with the CAN motor boards can be any of the following kinds:
 
  - Service call to read and set the config,
