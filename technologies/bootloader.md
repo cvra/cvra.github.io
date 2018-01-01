@@ -1,12 +1,12 @@
 ---
 layout: page
-title: CAN Bootloader
+title: Bootloader
 ---
 
 <div class="row">
 <div class="large-6 columns">
     <p>
-    The CAN bootloader is a general purpose bootloader, that we use on all our CAN boards, it's <a href="https://github.com/cvra/can-bootloader">available on Github</a>.
+    The bootloader is a general purpose bootloader, that we use on all our CAN boards, it's <a href="https://github.com/cvra/can-bootloader">available on Github</a>.
     </p>
     <p>
     It allows us to flash them with application firmwares over CAN, thus removing the need to intervene directly on the boards (via debugger).
@@ -15,10 +15,10 @@ title: CAN Bootloader
 </div>
 <div class="large-6 columns">
     <figure>
-        <img src="/images/technologies/bootloader.png" alt="CAN Bootloader">
+        <img src="/images/technologies/bootloader.png" alt="Bootloader">
         <figcaption>
             <center>
-                Using the CAN Bootloader to read the config of a <a href="/technologies/io_board.html">CAN IO board</a>, and flash it over CAN (using the <a href="/technologies/can_dongle.html">CAN USB dongle</a>).
+                Using the bootloader to read the config of a <a href="/technologies/io_board.html">CAN IO board</a>, and flash it over CAN (using the <a href="/technologies/can_dongle.html">CAN USB dongle</a>).
             </center>
         </figcaption>
     </figure>

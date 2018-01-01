@@ -1,12 +1,12 @@
 ---
 layout: page
-title: CAN IO Board
+title: IO Board
 ---
 
 <div class="row">
 <div class="large-6 columns">
     <p>
-    The CAN IO board is a small board that allows us to expose a bunch of GPIOs (analog and digital) and some common communication buses (I²C and SPI) over CAN.
+    The IO board is a small board that allows us to expose a bunch of GPIOs (analog and digital) and some common communication buses (I²C and SPI) over CAN.
     </p>
     <h1>Contents</h1>
     <p>
@@ -24,10 +24,10 @@ title: CAN IO Board
 </div>
 <div class="large-6 columns">
     <figure>
-        <img src="/images/technologies/io-board.jpg" alt="CAN IO board">
+        <img src="/images/technologies/io-board.jpg" alt="IO board">
         <figcaption>
             <center>
-                 A CAN IO board with the debug connector soldered (right) and CAN bus wired (left).
+                 A IO board with the debug connector soldered (right) and CAN bus wired (left).
             </center>
         </figcaption>
     </figure>
@@ -38,7 +38,7 @@ title: CAN IO Board
 
 # Features
 
-The CAN IO board is a small board with a dedicated MCU that has the following features:
+The IO board is a small board with a dedicated MCU that has the following features:
 
  - CAN interface with communication over UAVCAN for IO control (read / write).
  - CAN bootloader for easy firmware update over the bus.
@@ -58,7 +58,7 @@ Schematics and layout are made with KiCad and <a href="https://github.com/cvra/c
 Two Molex picoblade connectors are used for CAN bus wiring in daisy chain.
 GPIOs are exposed on the sides of the board by through-hole pins.
 
-![CAN IO board](/images/technologies/3d-io-board.png)
+![IO board](/images/technologies/3d-io-board.png)
 
 <a name="software"></a>
 
