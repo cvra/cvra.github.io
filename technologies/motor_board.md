@@ -26,7 +26,14 @@ title: CAN Motor Board
     </p>
 </div>
 <div class="large-6 columns">
-    <p><img src="/images/technologies/all-motor-boards.jpg" alt="CAN motor boards" /></p>
+    <figure>
+        <img src="/images/technologies/motor-board.jpg" alt="CAN motor boards on Debra's arm">
+        <figcaption>
+            <center>
+                CAN motor boards used on the SCARA arm of Debra.
+            </center>
+        </figcaption>
+    </figure>
 </div>
 </div>
 
@@ -96,3 +103,8 @@ Communication with the CAN motor boards can be any of the following kinds:
  - Service call to read and set the config,
  - Publish control setpoints, supports voltage, torque, velocity, and position setpoints,
  - Subscribe to feedback messages, supports streaming voltage, torque, velocity, position, external encoder, index position, and PID (setpoint/measured) values
+
+<figure>
+  <img src="/images/technologies/motor-board.jpg" alt="CAN motor boards on Debra's arm">
+  <figcaption><center>CAN motor boards used on the SCARA arm of Debra.</center></figcaption>
+</figure>

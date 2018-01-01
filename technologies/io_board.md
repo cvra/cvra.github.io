@@ -3,19 +3,36 @@ layout: page
 title: CAN IO Board
 ---
 
-<h1>Contents</h1>
-<p>
-    <ul>
-        <li><a href="io_board.html#features">Features</a></li>
-        <li><a href="io_board.html#hardware">Hardware</a></li>
-        <li><a href="io_board.html#software">Application software</a></li>
-        <li>Quick links:
-            <a href="https://github.com/cvra/can-io-board">Hardware</a> |
-            <a href="https://github.com/cvra/robot-software/tree/master/can-io-firmware">Software</a> |
-            <a href="https://github.com/cvra/can-bootloader">Bootloader</a>
-        </li>
-    </ul>
-</p>
+<div class="row">
+<div class="large-6 columns">
+    <p>
+    The CAN IO board is a small board that allows us to expose a bunch of GPIOs (analog and digital) and some common communication buses (I²C and SPI) over CAN.
+    </p>
+    <h1>Contents</h1>
+    <p>
+        <ul>
+            <li><a href="io_board.html#features">Features</a></li>
+            <li><a href="io_board.html#hardware">Hardware</a></li>
+            <li><a href="io_board.html#software">Application software</a></li>
+            <li>Quick links:
+                <a href="https://github.com/cvra/can-io-board">Hardware</a> |
+                <a href="https://github.com/cvra/robot-software/tree/master/can-io-firmware">Software</a> |
+                <a href="https://github.com/cvra/can-bootloader">Bootloader</a>
+            </li>
+        </ul>
+    </p>
+</div>
+<div class="large-6 columns">
+    <figure>
+        <img src="/images/technologies/io-board.jpg" alt="CAN IO board">
+        <figcaption>
+            <center>
+                 A CAN IO board with the debug connector soldered (right) and CAN bus wired (left).
+            </center>
+        </figcaption>
+    </figure>
+</div>
+</div>
 
 <a name="features"></a>
 
