@@ -84,9 +84,9 @@ The CAN motor board is a small board with a dedicated MCU that has the following
 
 # Application software
 
-The CAN motor board runs firmware on a STM32F3 MCU (STM32F303CCT6 precisely) that we wrote using [ChibiOS RTOS](chibios.org).
+The CAN motor board runs firmware on a STM32F3 MCU (STM32F303CCT6 precisely) that we wrote using [ChibiOS RTOS](http://www.chibios.org/).
 Drivers for the ADC, quadrature encoder, and H-bridge were implemented on top of the ChibiOS HAL.
-The [UAVCAN communication protocol](uavcan.org) is supported by the CAN motor boards.
+The [UAVCAN communication protocol](http://uavcan.org/) is supported by the CAN motor boards.
 All the code is [available on Github](https://github.com/cvra/robot-software/tree/master/motor-control-firmware).
 
 The control software runs three cascaded PID loops for torque, velocity, and position.
