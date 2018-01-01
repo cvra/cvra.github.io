@@ -2,7 +2,14 @@
   href: "/blog/"
 
 - title: "About us"
-  href: "/about_us/about_us.html"
+  url: "/about_us/about_us.html"
+
+  subcategories:
+  - subtitle: "Contact"
+    subhref: "/map.html"
+
+  - subtitle: "Sponsors"
+    subhref: "/sponsors.html"
 
 - title: "Robots"
   url: "/coupe"
@@ -67,8 +74,3 @@
 - title: "Pictures"
   href: "/pictures.html"
 
-- title: "Sponsors"
-  href: "/sponsors.html"
-
-- title: "Contact"
-  href: "/map.html"
