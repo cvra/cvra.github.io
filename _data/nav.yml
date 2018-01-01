@@ -57,12 +57,15 @@
   subcategories:
     - subtitle: "CAN Bootloader"
       subhref: "/technologies/bootloader.html"
+      imgref: "/images/technologies/bootloader.png"
 
     - subtitle: "CAN Motor Board"
       subhref: "/technologies/motor_board.html"
+      imgref: "/images/technologies/motor-board.jpg"
 
     - subtitle: "CAN IO Board"
       subhref: "/technologies/io_board.html"
+      imgref: "/images/technologies/io-board.jpg"
 
 - title: "Pictures"
   href: "/pictures.html"
