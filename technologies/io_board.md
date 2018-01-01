@@ -27,7 +27,7 @@ title: IO Board
         <img src="/images/technologies/io-board.jpg" alt="IO board">
         <figcaption>
             <center>
-                 A IO board with the debug connector soldered (right) and CAN bus wired (left).
+                 An IO board with USB type A connector behind it for scale.
             </center>
         </figcaption>
     </figure>

@@ -30,7 +30,7 @@ title: CAN USB Dongle
         <img src="/images/technologies/can-dongle.jpg" alt="CAN USB Dongle">
         <figcaption>
             <center>
-                The CAN USB dongle with CAN wired (right), and USB (left).
+                The CAN USB dongle with micro USB wired (left).
             </center>
         </figcaption>
     </figure>
