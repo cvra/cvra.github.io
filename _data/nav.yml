@@ -67,6 +67,10 @@
       subhref: "/technologies/io_board.html"
       imgref: "/images/technologies/io-board.jpg"
 
+    - subtitle: "CAN USB Dongle"
+      subhref: "/technologies/can_dongle.html"
+      imgref: "/images/technologies/can-dongle.jpg"
+
 - title: "Pictures"
   href: "/pictures.html"
 
