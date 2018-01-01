@@ -27,9 +27,9 @@ title: CAN Bootloader
 
 # Features
 
- - Firmware flashing over CAN, without intervention on the board directly
- - Firmware flashing is fast, a typical firmware (few hundred kilobytes) is written in a few seconds over a 1MBbs CAN interface
- - Parallel firmware flashing (using multicast) when several boards are flashed with the same firmware
- - Board tracking through small config containing ID, name, board type, and number of times the flash was erased
- - On power up, it waits for a few seconds for the user to input commands before jumping to the application
- - Application code is checked by CRC at boot, invalid applications are not loaded
+ - Firmware flashing over CAN, without intervention on the board directly.
+ - Firmware flashing is fast, a typical firmware (few hundred kilobytes) is written in a few seconds over a 1MBbs CAN interface.
+ - Parallel firmware flashing (using multicast) when several boards are flashed with the same firmware.
+ - Board tracking through small config containing ID, name, board type, and number of times the flash was erased.
+ - On power up, it waits for a few seconds for the user to input commands before jumping to the application.
+ - Application code is checked by CRC at boot, invalid applications are not loaded.

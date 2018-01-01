@@ -43,16 +43,16 @@ title: CAN Motor Board
 
 The CAN motor board is a small board with a dedicated MCU that has the following features:
 
- - CAN interface with communication over UAVCAN for parameter/gain setting, setpoint sending, and feedback streaming
- - CAN bootloader for easy firmware update over the bus
- - Control a single DC motor with current sensing, allowing cascaded PID control (torque, velocity, and position)
- - H-bridge to drive the motor bidirectionally that supports driving a motor with up to 16.8V @ 6.6A continuously
- - Quadrature encoder interface for motor (5V tolerant)
- - Secondary quadrature encoder interface (5V tolerant) (eg. for separate odometry wheels)
- - Analog input for RC-servo control
- - Digital input for indexing, allows us to determine a reference location on a given axis that can be used for absolute positioning
- - Runs on 3 or 4 cell LiPo batteries
- - SWD connector for flashing and debugging, with UART exposed on the same connector
+ - CAN interface with communication over UAVCAN for parameter/gain setting, setpoint sending, and feedback streaming.
+ - CAN bootloader for easy firmware update over the bus.
+ - Control a single DC motor with current sensing, allowing cascaded PID control (torque, velocity, and position).
+ - H-bridge to drive the motor bidirectionally that supports driving a motor with up to 16.8V @ 6.6A continuously.
+ - Quadrature encoder interface for motor (5V tolerant).
+ - Secondary quadrature encoder interface (5V tolerant) (eg. for separate odometry wheels).
+ - Analog input for RC-servo control.
+ - Digital input for indexing, allows us to determine a reference location on a given axis that can be used for absolute positioning.
+ - Runs on 3 or 4 cell LiPo batteries.
+ - SWD connector for flashing and debugging, with UART exposed on the same connector.
 
 <a name="hardware"></a>
 

@@ -40,14 +40,14 @@ title: CAN IO Board
 
 The CAN IO board is a small board with a dedicated MCU that has the following features:
 
- - CAN interface with communication over UAVCAN for IO control (read / write)
- - CAN bootloader for easy firmware update over the bus
- - 11 GPIOs exposing
-     * Digital outputs, including timer channels for PWM
-     * Digital inputs, including timer channels for pulse counting
-     * Analog inputs (ADC)
- - Communication busses such as I²C and SPI
- - SWD connector for flashing and debugging, with UART exposed on the same connector
+ - CAN interface with communication over UAVCAN for IO control (read / write).
+ - CAN bootloader for easy firmware update over the bus.
+ - 11 GPIOs exposing:
+     * Digital outputs, including timer channels for PWM,
+     * Digital inputs, including timer channels for pulse counting,
+     * Analog inputs (ADC).
+ - Communication busses such as I²C and SPI.
+ - SWD connector for flashing and debugging, with UART exposed on the same connector.
 
 <a name="hardware"></a>
 
