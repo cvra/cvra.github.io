@@ -62,14 +62,21 @@
 - title: "Technologies"
   url: "/technologies"
   subcategories:
-    - subtitle: "CAN Bootloader"
+    - subtitle: "Bootloader"
       subhref: "/technologies/bootloader.html"
+      imgref: "/images/technologies/bootloader.png"
 
-    - subtitle: "CAN Motor Board"
+    - subtitle: "Motor Board"
       subhref: "/technologies/motor_board.html"
+      imgref: "/images/technologies/motor-board.jpg"
 
-    - subtitle: "CAN IO Board"
+    - subtitle: "IO Board"
       subhref: "/technologies/io_board.html"
+      imgref: "/images/technologies/io-board.jpg"
+
+    - subtitle: "CAN USB Dongle"
+      subhref: "/technologies/can_dongle.html"
+      imgref: "/images/technologies/can-dongle.jpg"
 
 - title: "Pictures"
   href: "/pictures.html"

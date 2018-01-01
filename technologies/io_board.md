@@ -1,36 +1,53 @@
 ---
 layout: page
-title: CAN IO Board
+title: IO Board
 ---
 
-<h1>Contents</h1>
-<p>
-    <ul>
-        <li><a href="io_board.html#features">Features</a></li>
-        <li><a href="io_board.html#hardware">Hardware</a></li>
-        <li><a href="io_board.html#software">Application software</a></li>
-        <li>Quick links:
-            <a href="https://github.com/cvra/can-io-board">Hardware</a> |
-            <a href="https://github.com/cvra/robot-software/tree/master/can-io-firmware">Software</a> |
-            <a href="https://github.com/cvra/can-bootloader">Bootloader</a>
-        </li>
-    </ul>
-</p>
+<div class="row">
+<div class="large-6 columns">
+    <p>
+    The IO board is a small board that allows us to expose a bunch of GPIOs (analog and digital) and some common communication buses (I²C and SPI) over CAN.
+    </p>
+    <h1>Contents</h1>
+    <p>
+        <ul>
+            <li><a href="io_board.html#features">Features</a></li>
+            <li><a href="io_board.html#hardware">Hardware</a></li>
+            <li><a href="io_board.html#software">Application software</a></li>
+            <li>Quick links:
+                <a href="https://github.com/cvra/can-io-board">Hardware</a> |
+                <a href="https://github.com/cvra/robot-software/tree/master/can-io-firmware">Software</a> |
+                <a href="https://github.com/cvra/can-bootloader">Bootloader</a>
+            </li>
+        </ul>
+    </p>
+</div>
+<div class="large-6 columns">
+    <figure>
+        <img src="/images/technologies/io-board.jpg" alt="IO board">
+        <figcaption>
+            <center>
+                 A IO board with the debug connector soldered (right) and CAN bus wired (left).
+            </center>
+        </figcaption>
+    </figure>
+</div>
+</div>
 
 <a name="features"></a>
 
 # Features
 
-The CAN IO board is a small board with a dedicated MCU that has the following features:
+The IO board is a small board with a dedicated MCU that has the following features:
 
- - CAN interface with communication over UAVCAN for IO control (read / write)
- - CAN bootloader for easy firmware update over the bus
- - 11 GPIOs exposing
-     * Digital outputs, including timer channels for PWM
-     * Digital inputs, including timer channels for pulse counting
-     * Analog inputs (ADC)
- - Communication busses such as I²C and SPI
- - SWD connector for flashing and debugging, with UART exposed on the same connector
+ - CAN interface with communication over UAVCAN for IO control (read / write).
+ - CAN bootloader for easy firmware update over the bus.
+ - 11 GPIOs exposing:
+     * Digital outputs, including timer channels for PWM,
+     * Digital inputs, including timer channels for pulse counting,
+     * Analog inputs (ADC).
+ - Communication busses such as I²C and SPI.
+ - SWD connector for flashing and debugging, with UART exposed on the same connector.
 
 <a name="hardware"></a>
 
@@ -41,7 +58,7 @@ Schematics and layout are made with KiCad and <a href="https://github.com/cvra/c
 Two Molex picoblade connectors are used for CAN bus wiring in daisy chain.
 GPIOs are exposed on the sides of the board by through-hole pins.
 
-![CAN IO board](/images/technologies/3d-io-board.png)
+![IO board](/images/technologies/3d-io-board.png)
 
 <a name="software"></a>
 
