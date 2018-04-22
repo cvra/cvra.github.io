@@ -23,7 +23,7 @@ Fortunately, everything went well, and we went to the final game, where we lost 
 
 ![CVRA team with our two robots, Order & Chaos](/images/posts/swisseurobot2018/team.jpg)
 
-As we are in the first three Swiss teams, we will represent Switzerland in the European finals.
+As we are in the first three Swiss teams, we will represent Switzerland in the Eurobot finals.
 It will take place from May 9th to May 13th in La Roche-sur-Yon, France.
 The two other teams qualified with us are Happy Social Robot from Rapperswill (Swiss champion) and TeamAuto from Yverdon (4th).
 
