@@ -14,6 +14,9 @@
 - title: "Robots"
   url: "/coupe"
   subcategories:
+    - subtitle: "2018"
+      subhref: "/coupe/2018.html"
+
     - subtitle: "2017"
       subhref: "/coupe/2017.html"
 
