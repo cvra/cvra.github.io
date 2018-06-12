@@ -1,31 +1,27 @@
-
-
 - name: Sick
   logo: sick.png
-  what: "All the sensors of the robots are made by Sick, including the brand new LIDAR used for object recognition. "
+  what: "All the sensors of the robots are made by Sick."
   url: https://www.sick.com/
 
-- name: Intel
-  logo: intel.png
-  url: http://www.intel.com/content/www/us/en/nuc/overview.html
-  what: "Intel provided us two of their latest NUC boards, with their associated SSDs. They will be used to power Debra, our bigger robot."
-
-
-- name: Claude Piguet SA
-  logo: claudePiguet.png
-  what: "Claude Piguet SA made the custom tyres we use on our wheels."
-  url: http://www.claude-piguet.ch/
-
+- name: Faulhaber
+  logo: faulhaber.png
+  what: "Faulhaber is providing all the motors on our robots."
+  url: https://www.faulhaber.com/
 
 - name: City of Renens
   logo: renens.png
   what: "The city of Renens is providing us with the facilities in which we develop our projects."
   url: http://www.renens.ch/
 
-- name: Swiss RepRap
-  logo: swissreprap.png
-  what: "Swiss RepRap offered us a discount on our 3D printer and related materials."
-  url: http://swissreprap.com/
+- name: Festo
+  logo: festo.png
+  what: "Festo provides succion cups and vacuum tubes we use."
+  url: http://www.festo.ch
+
+- name: Claude Piguet SA
+  logo: claudePiguet.png
+  what: "Claude Piguet SA made the custom tyres we use on our wheels."
+  url: http://www.claude-piguet.ch/
 
 - name: General Microtechnology & Photonics
   logo: gmp.png
@@ -37,55 +33,25 @@
   what: "Igus gave us precision screws."
   url: http://www.igus.ch/
 
-- name: Faulhaber
-  logo: faulhaber.png
-  what: "Faulhaber is providing all the motors on our robots."
-  url: https://www.faulhaber.com/
-
 - name: Hiwin
   logo: hiwin.png
   what: "Hiwin provided us with ballscrews and linear guideways for our CNC mill."
   url: http://www.hiwin.ch/
-
-- name: Omron
-  logo: omron.png
-  what: "Omron gave us all the automation devices involved in the build of our CNC mill."
-  url: http://www.omron.ch
 
 - name: Thomas Gardner Denver
   logo: gardnerDenverThomas.png
   what: "Thomas Gardner Denver gave us the vaccum pumps we used from 2011 to 2014."
   url: http://www.gd-thomas.com/
 
-- name: Rittal
-  logo: rittal.png
-  what: "Rittal built the electrical enclosure of our CNC mill."
-  url: http://www.rittal.com/
-
-- name: PMD
-  logo: pmd.png
-  what: "PMD offered us one of their 3D camera."
-  url: http://www.pmdtec.com/
-
-- name: Arrow
-  logo: arrow.png
-  what: "Arrow provided the Beaglone Black used in our small robot, Goldorak."
-  url: https://www.arrow.com/
-
-- name: Festo
-  logo: festo.png
-  what: "Festo provides succion cups and vacuum tubes we use."
-  url: http://www.festo.ch
+- name: Bossard
+  logo: bossard.png
+  what: "Bossard gave us the screws used in our projects."
+  url: http://www.bossard.com
 
 - name: Matisa
   logo: matisa.png
   what: "Matisa is making the custom chassis of our CNC mill."
   url: http://www.matisa.ch/
-
-- name: Bossard
-  logo: bossard.png
-  what: "Bossard gave us the screws used in our projects."
-  url: http://www.bossard.com
 
 - name: Posic
   logo: posic.png
@@ -94,20 +60,20 @@
 
 - name: Spirit Fever
   logo: SpiritFever.png
-  what: "Spirit Fever printed the custom polos and hoodies of the team."
+  what: "Spirit Fever printed the custom t-shirts and hoodies of the team."
   url: http://www.spirit-fever.com/
 
-- name: IAR Laser-Mécanique SA
-  logo: iar.png
-  what: IAR Laser-Mécanique offered us to laser cut all the metal sheets of the robot.
-  url: http://iar.ch
-
-- name: ASSAG
-  logo: assag.png
-  what: ASSAG has provided us with Cylkro face gear technology gears used in Debra's arms.
-  url: http://www.assag.ch/En/index.php
+- name: Techniques Laser SA
+  logo: laser.png
+  what: Techniques Laser offered us to laser cut all the metal sheets of the robot.
+  url: http://www.tec-laser.ch/
 
 - name: Phoenix Contact
   logo: phoenix_contact.png
-  what: Phoenix Contact sponsored us power connectors we use on our electronic boards.
+  what: Phoenix Contact sponsors power connectors we use on our electronic boards.
   url: https://www.phoenixcontact.com/
+
+- name: Arrow
+  logo: arrow.png
+  what: "Arrow provides us with electronics components from their catalog."
+  url: https://www.arrow.com/
