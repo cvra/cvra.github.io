@@ -21,7 +21,7 @@ We lost the first game, which meant that any further lost match would mean the e
 Fortunately, everything went well, and we went to the final game, where we lost against Happy Social Robot.
 
 
-![CVRA team with our two robots, Order & Chaos](/images/posts/swisseurobot2018/team.jpg)
+![CVRA team with our two robots, Order & Chaos](/images/2018/team.jpg)
 
 As we are in the first three Swiss teams, we will represent Switzerland in the Eurobot finals.
 It will take place from May 9th to May 13th in La Roche-sur-Yon, France.
