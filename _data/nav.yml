@@ -65,24 +65,8 @@
     - subtitle: "2001"
       subhref: "/coupe/2001.html"
 
-- title: "Technologies"
-  url: "/technologies"
-  subcategories:
-    - subtitle: "Bootloader"
-      subhref: "/technologies/bootloader.html"
-      imgref: "/images/technologies/bootloader.png"
-
-    - subtitle: "Motor Board"
-      subhref: "/technologies/motor_board.html"
-      imgref: "/images/technologies/motor-board.jpg"
-
-    - subtitle: "IO Board"
-      subhref: "/technologies/io_board.html"
-      imgref: "/images/technologies/io-board.jpg"
-
-    - subtitle: "CAN USB Dongle"
-      subhref: "/technologies/can_dongle.html"
-      imgref: "/images/technologies/can-dongle.jpg"
+- title: "Tech"
+  href: "http://www.cvra.ch/robot-software/"
 
 - title: "Pictures"
   href: "/pictures.html"
