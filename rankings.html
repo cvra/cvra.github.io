@@ -1,0 +1,68 @@
+---
+layout: page
+title: Rankings
+---
+
+<style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #005387;
+    color: white;
+}
+</style>
+
+{% assign competitions = "SwissEurobot,Eurobot,Belgium Eurobot,Cup of Île-de-France" | split: ',' %}
+{% for competition in competitions %}
+<h2><b>{{competition}}</b></h2>
+<table id="customers">
+    <tr>
+        <th>Year</th>
+        <th>Theme</th>
+        <th>Host City</th>
+        <th>Robots</th>
+        <th>Round</th>
+        <th>Rank</th>
+        <th>Distinction</th>
+    </tr>
+    {% for record in site.data.records %}
+        {% if record.competition == competition %}
+            {% if record.rank == "1st" %}
+            <tr bgcolor="#F5CD00">
+            {% elsif record.rank == "2nd" %}
+            <tr bgcolor="B6B6B6">
+            {% elsif record.rank == "3rd" %}
+            <tr bgcolor="#E19346">
+            {% else %}
+            <tr>
+            {% endif %}
+                <td>{{record.year}}</td>
+                <td>{{record.theme}}</td>
+                <td>{{record.city}}</td>
+                <td>{{record.robots}}</td>
+                <td>{{record.round}}</td>
+                <td>{{record.rank}}</td>
+                {% if record.distinction %}
+                <td>{{record.distinction}}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+<br>
+{% endfor %}
