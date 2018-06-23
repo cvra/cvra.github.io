@@ -15,14 +15,14 @@
 - year: 2018
   theme: Robot Cities
   competition: SwissEurobot
-  city: Yverdon-les-Bains (CH)
+  city: Yverdon-les-Bains
   robots: Order & Chaos
   round: Runners-up
   rank: 2nd
 - year: 2018
   theme: Robot Cities
   competition: Belgium Eurobot
-  city: Namur (BE)
+  city: Namur
   robots: Order
   round: Group Stage
   rank: 12th
@@ -30,14 +30,14 @@
 - year: 2017
   theme: Moon Village
   competition: SwissEurobot
-  city: Yverdon-les-Bains (CH)
+  city: Yverdon-les-Bains
   robots: Debra<sup>7</sup>
   round: Group Stage
   rank: 9th
 - year: 2017
   theme: Moon Village
   competition: Belgium Eurobot
-  city: Namur (BE)
+  city: Namur
   robots: Debra<sup>7</sup>
   round: Group Stage
   rank: 9th
@@ -45,7 +45,7 @@
 - year: 2016
   theme: Beach Bots
   competition: SwissEurobot
-  city: Yverdon-les-Bains (CH)
+  city: Yverdon-les-Bains
   robots: Debra<sup>6</sup> & Goldorak
   round: Group Stage
   rank: 12th
@@ -53,7 +53,7 @@
 - year: 2015
   theme: Robomovies
   competition: SwissEurobot
-  city: Yverdon-les-Bains (CH)
+  city: Yverdon-les-Bains
   robots: Debra<sup>5</sup> & Caprica
   round: Not Qualified
   rank:
@@ -69,7 +69,7 @@
 - year: 2014
   theme: Prehistobot
   competition: SwissEurobot
-  city: Burgdorf (CH)
+  city: Burgdorf
   robots: Debra<sup>4</sup> & Nastya<sup>2</sup>
   round: Champions
   rank: 1st
@@ -77,7 +77,7 @@
 - year: 2014
   theme: Prehistobot
   competition: Belgium Eurobot
-  city: Mons (BE)
+  city: Mons
   robots: Debra<sup>4</sup
   round: Group Stage
   rank: 16th
@@ -93,21 +93,22 @@
 - year: 2013
   theme: Happy Birthday
   competition: SwissEurobot
-  city: Sion (CH)
+  city: Sion
   robots: Debra<sup>3</sup>
   round: Third Place
   rank: 3rd
 - year: 2013
   theme: Happy Birthday
   competition: Belgium Eurobot
-  city: Mons (BE)
+  city: Mons
   robots: Debra<sup>3</sup>
   round: Group Stage
   rank: 20th
 
 - year: 2012
   theme: Treasure Island
-  city: Lausanne (CH)
+  competition: SwissEurobot
+  city: Lausanne
   robots: Debra<sup>2</sup>
   round: Fourth Place
   rank: 4th
@@ -115,14 +116,14 @@
 - year: 2011
   theme: Chess'up!
   competition: SwissEurobot
-  city: Yverdon-les-Bains (CH)
+  city: Yverdon-les-Bains
   robots: Black Pearl
   round: Finals
   rank: 8th
 - year: 2011
   theme: Chess'up!
   competition: SwissEurobot
-  city: Yverdon-les-Bains (CH)
+  city: Yverdon-les-Bains
   robots: Debra
   round: Not Qualified
   rank:
@@ -130,7 +131,7 @@
 - year: 2010
   theme: Feed the world
   competition: SwissEurobot
-  city: Rapperswil-Jona (CH)
+  city: Rapperswil-Jona
   robots: Lollipop
   round: Quarter-Finals
   rank: 5th
@@ -146,7 +147,7 @@
 - year: 2009
   theme: Temple of Atlantis
   competition: SwissEurobot
-  city: Yverdon-les-Bains (CH)
+  city: Yverdon-les-Bains
   robots: Debby
   round: Third Place
   rank: 3rd
@@ -154,7 +155,7 @@
 - year: 2008
   theme: Mission to Mars
   competition: SwissEurobot
-  city: Rapperswil-Jona (CH)
+  city: Rapperswil-Jona
   robots: Calamity
   round: Group Stage
   rank: 11th
@@ -162,7 +163,7 @@
 - year: 2007
   theme: Waste sorting
   competition: SwissEurobot
-  city: Yverdon-les-Bains (CH)
+  city: Yverdon-les-Bains
   robots: Swiffette
   round: Finals
   rank: 5th
@@ -177,7 +178,7 @@
 - year: 2006
   theme: Golf
   competition: SwissEurobot
-  city: Winterthur (CH)
+  city: Winterthur
   robots: Katrina
   round: Third Place
   rank: 3rd
@@ -185,7 +186,7 @@
 - year: 2005
   theme: Bowling
   competition: SwissEurobot
-  city: Yverdon-les-Bains (CH)
+  city: Yverdon-les-Bains
   robots: Hansel & Gretel
   round: Group Stage
   rank: 9th
