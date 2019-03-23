@@ -18,7 +18,11 @@
 .thumbnail > h3 span {
     background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.8);
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    display:inline-block;
 }
 
 .thumbnail > h3 span.spacer {
