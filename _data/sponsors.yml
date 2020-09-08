@@ -77,3 +77,8 @@
   logo: arrow.png
   what: "Arrow provides us with electronics components from their catalog."
   url: https://www.arrow.com/
+
+- name: Conrad
+  logo: conrad.png
+  what: "Conrad provided us with servomotors for our  2020-2021 robots"
+  url: https://www.conrad.ch/
