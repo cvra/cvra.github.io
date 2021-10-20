@@ -240,11 +240,6 @@ order to have real time behavior, or TCP to have reliable transmission? Do we
 handle errors at the application layer? Do we have something in-between for
 reliable ordering of messages (à la Paxos)?
 
-[^1]: The software landscape for FPGA has since changed, and it might be easier
-    now thanks to projects like [Yosys](http://www.clifford.at/yosys/) and
-    [Chisel](https://www.chisel-lang.org/).
-[^2]: Serialization is the process of taking a high level structure and
-    translating it to bits on the wire.
-[^3]: I2C is typically not considered a fieldbus and was never designed for
-    inter-board communication. However it is commonly used in Eurobot due to
-    its relative simplicity.
+[^1]: The software landscape for FPGA has since changed, and it might be easier now thanks to projects like [Yosys](http://www.clifford.at/yosys/) and [Chisel](https://www.chisel-lang.org/).
+[^2]: Serialization is the process of taking a high level structure and translating it to bits on the wire.
+[^3]: I2C is typically not considered a fieldbus and was never designed for inter-board communication. However it is commonly used in Eurobot due to its relative simplicity.
